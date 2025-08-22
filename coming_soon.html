@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coming Soon</title>
+  <style>
+    .content-area {
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+    }
+
+    .d-flex {
+      display: flex;
+    }
+    .align-items-center {
+      align-items: center;
+    }
+    .justify-content-center {
+      justify-content: center;
+    }
+
+    /* Fade in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn ease-in 1;
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+    }
+    .fade-in.one { animation-delay: 0.7s; }
+    .fade-in.two { animation-delay: 1.2s; }
+    .fade-in.three { animation-delay: 1.7s; }
+
+    .logo {
+      max-width: 480px;
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h3 {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 100;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    .social ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .social ul li {
+      display: inline-block;
+      margin: 5px;
+    }
+    .social ul li a img {
+      width: 28px;
+      transition: opacity 0.3s;
+    }
+    .social ul li a img:hover {
+      opacity: 0.7;
+    }
+
+    .copy-right {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      text-align: center;
+      padding-bottom: 15px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="content-area d-flex align-items-center justify-content-center">
+    <div>
+      <img src="//placehold.it/400x200/FFF/eee?text=Logo" alt="" class="logo fade-in one">
+      <h3 class="fade-in two">Coming Soon</h3>
+      <div class="social fade-in three">
+        <ul>
+          <li>
+            <a href="https://facebook.com/logikidsbg" target="_blank">
+              <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA%2FPjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHZlcnNpb249IjEuMCIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzJweCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI%2BPGc%2BPHBhdGggZD0iTTMyLDMwYzAsMS4xMDQtMC44OTYsMi0yLDJIMmMtMS4xMDQsMC0yLTAuODk2LTItMlYyYzAtMS4xMDQsMC44OTYtMiwyLTJoMjhjMS4xMDQsMCwyLDAuODk2LDIsMlYzMHoiIGZpbGw9IiMzQjU5OTgiLz48cGF0aCBkPSJNMjIsMzJWMjBoNGwxLTVoLTV2LTJjMC0yLDEuMDAyLTMsMy0zaDJWNWMtMSwwLTIuMjQsMC00LDBjLTMuNjc1LDAtNiwyLjg4MS02LDd2M2gtNHY1aDR2MTJIMjJ6IiBmaWxsPSIjRkZGRkZGIiBpZD0iZiIvPjwvZz48Zy8%2BPGcvPjxnLz48Zy8%2BPGcvPjxnLz48L3N2Zz4%3D" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="copy-right">
+    &copy; 2025 Logikids
+  </div>
+</body>
+</html>
