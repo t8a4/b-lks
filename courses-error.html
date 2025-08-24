@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страницата временно не е налична</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; /* static background */
+      color: #fff !important;
+      text-align: center;
+    }
+
+    /* Main content container */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Headline */
+    .crs-err-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Paragraph */
+    .crs-err-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 700px;
+      text-align: center;
+      color: #f5f5f5;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Solid white button */
+    .btn-home {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+      background-color: #fff;
+      color: #6366f1;
+      transition: all 0.3s ease;
+    }
+
+    .btn-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background-color: #f1f1f1;
+    }
+
+    /* Component containers */
+    #navbar-container,
+    #footer-container {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+      background: transparent !important;
+    }
+    #navbar-container.loaded,
+    #footer-container.loaded {
+      opacity: 1;
+    }
+    #navbar-container { text-align: initial; }
+    #footer-container { text-align: left; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-content { padding-top: 100px; }
+      .crs-err-title { font-size: 2rem; }
+      .crs-err-text { font-size: 1rem; }
+      .btn-home { padding: 12px 24px; font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .main-content { padding-top: 80px; }
+      .crs-err-title { font-size: 1.8rem; }
+      .crs-err-text { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Container -->
+  <div id="navbar-container"></div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1 class="crs-err-title">Страницата за този курс временно не е налична</h1>
+    <p class="crs-err-text">
+      За почече информация относно курса, моля свържете се с нас на тел. 0879185018 или от бутон по-долу.
+    </p>
+    <a href="/" class="btn-home">Запишете се за курса</a>
+  </div>
+
+  <!-- Footer Container -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Load navbar and footer
+    async function loadComponent(url, containerId) {
+      try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        container.innerHTML = html;
+        container.classList.add('loaded');
+
+        // Execute any scripts in the loaded content
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.src) newScript.src = script.src;
+          else newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await Promise.all([
+        loadComponent('navbar.html', 'navbar-container'),
+        loadComponent('footer.html', 'footer-container')
+      ]);
+    });
+  </script>
+
+</body>
+</html>

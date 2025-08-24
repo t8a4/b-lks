@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсове по програмиране за деца - LogiKids</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main content container */
+        .main-content {
+            flex: 1;
+            padding-top: 100px; /* Space for fixed navbar */
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            width: 100%;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border-radius: 0;
+        }
+
+        .nav-btn:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .nav-btn:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.4);
+            font-weight: 700;
+        }
+
+        .nav-separator {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin: 0 2px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 40px;
+            margin: 0 20px 50px 20px;
+            color: #2d3748;
+        }
+
+        .info-section h2 {
+            color: #4f46e5;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .info-section h3 {
+            color: #4f46e5;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+            border-left: 4px solid #4f46e5;
+            padding-left: 15px;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+
+        .info-section ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .info-section li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 40px;
+            margin: 0 20px 50px 20px;
+            color: #2d3748;
+        }
+
+        .faq-section h2 {
+            color: #4f46e5;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+        }
+
+        .faq-question.active {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4a5568;
+            margin: 0;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .course-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .course-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-title {
+            flex: 1;
+        }
+
+        .course-title h2 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .course-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            padding: 12px 25px;
+            color: #475569;
+            margin: 0 20px 25px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-info p {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
+            letter-spacing: 0.3px;
+        }
+
+        .course-benefits {
+            padding: 0 30px 25px 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            background: #4299e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .course-benefits .benefit-item:nth-child(1) .checkmark {
+            background: #0c3fd8;
+        }
+
+        .course-benefits .benefit-item:nth-child(2) .checkmark {
+            background: #6de907;
+        }
+
+        .course-benefits .benefit-item:nth-child(3) .checkmark {
+            background: #ec1c68;
+        }
+
+        .course-benefits .benefit-item:nth-child(4) .checkmark {
+            background: #ffad26;
+        }
+
+        .cta-button-a {
+            margin: 25px 30px 30px 30px !important;
+        }
+
+        .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .signup-section {
+            width: 100%;
+            margin: 0 !important;
+            border-radius: 0;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            color: white;
+            margin-bottom: 0 !important;
+        }
+
+        .signup-section h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .action-cta-primary {
+            background: white;
+            color: #6366F1;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-cta-primary svg {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .action-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Component containers - prevent conflicts */
+        #navbar-container,
+        #footer-container {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #navbar-container.loaded,
+        #footer-container.loaded {
+            opacity: 1;
+        }
+
+        /* Isolate navbar styles */
+        #navbar-container {
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* Isolate footer styles */
+        #footer-container {
+            position: relative;
+            z-index: 100;
+            margin-top: auto;
+        }
+
+        /* Prevent footer from having rounded corners */
+        #footer-container .footer {
+            border-radius: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .main-content {
+                padding-top: 80px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .nav-btn {
+                width: 200px;
+                border-radius: 8px !important;
+            }
+
+            .nav-separator {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .course-card {
+                margin-top: 55px;
+                overflow: visible;
+            }
+
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            .course-icon {
+                position: absolute;
+                top: -60px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 100px;
+                z-index: 10;
+                border: 4px solid white;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            }
+
+            .course-title {
+                margin-top: 20px;
+            }
+
+            .course-title h2 {
+                font-size: 1.3rem;
+            }
+
+            .course-info {
+                margin: 0 15px 20px 15px;
+                padding: 10px 20px;
+            }
+
+            .course-benefits {
+                padding: 0 15px 20px 15px;
+            }
+
+            .info-section, .faq-section {
+                margin: 0 15px 30px 15px;
+                padding: 25px 20px;
+            }
+
+            .info-section h2, .faq-section h2 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                margin: 20px 15px 25px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-section {
+                padding: 40px 0;
+                margin-bottom: 30px;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-section p {
+                font-size: 0.9rem;
+                padding: 14px 28px;
+            }
+
+            .courses-grid {
+                gap: 15px;
+            }
+
+            .course-icon {
+                width: 90px;
+                height: 90px;
+                font-size: 1.5rem;
+                top: -55px;
+            }
+
+            .course-title h2 {
+                font-size: 1.2rem;
+            }
+
+            .benefit-item {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Animation for cards */
+        .course-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+        .course-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+
+        /* Fix for navbar spacing */
+#navbar-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white; /* Adjust based on your navbar color */
+}
+
+/* Adjust main content padding based on navbar height */
+.main-content {
+  padding-top: 80px; /* Adjust this value based on your navbar height */
+  padding-bottom: 0 !important; /* Reduced from 40px */
+}
+
+/* Reduce margins on sections */
+.info-section, .faq-section {
+  margin: 0 20px 20px 20px; /* Reduced bottom margin */
+}
+
+.courses-grid {
+  margin-bottom: 20px; /* Reduced from 50px */
+}
+
+.signup-section {
+  margin-bottom: 0;
+}
+
+/* Ensure footer has no top margin */
+#footer-container {
+  margin-top: 0;
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Курсове по програмиране</h1>
+                <p>Вдъхновяваме малките умове да създават големи неща чрез технологии и програмиране</p>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" onclick="showSection('courses')">Курсове</button>
+                    <span class="nav-separator"></span>
+                    <button class="nav-btn" onclick="showSection('info')">Информация</button>
+                    <span class="nav-separator"></span>
+                    <button class="nav-btn" onclick="showSection('faq')">ЧЗВ</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Courses Section -->
+            <div id="courses-section" class="section active">
+                <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <div class="course-icon">
+                            <img src="Screenshot 2025-08-21 231208.png" alt="Course Icon">
+                        </div>
+                        <div class="course-title">
+                            <h2>Дигитални Откриватели</h2>
+                        </div>
+                    </div>
+                    <div class="course-info">
+                        <p>Деца 1–2 клас / 6–7 г.</p>
+                    </div>
+                    <div class="course-benefits">
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Въвеждане в компютрите</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Първи стъпки в дигиталния свят</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Логика и алгоритмично мислене</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Основни понятия в програмирането</span>
+                        </div>
+                    </div>
+                    <div class="cta-button-a">
+                        <button class="btn" onclick="showCourseDetails('Дигитални Откриватели')">Разгледай курса</button>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <div class="course-icon">
+                            <img src="Screenshot 2025-08-21 231208.png" alt="Course Icon">
+                        </div>
+                        <div class="course-title">
+                            <h2>Малки Технологични Майстори</h2>
+                        </div>
+                    </div>
+                    <div class="course-info">
+                        <p>Деца 2–3 клас / 7–8 г.</p>
+                    </div>
+                    <div class="course-benefits">
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Дигитална грамотност (Google пакет – документи, презентации, таблици)</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Работа в екип и споделяне на проекти</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Въведение в блоковото програмиране</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Първи собствени дигитални проекти</span>
+                        </div>
+                    </div>
+                    <div class="cta-button-a">
+                        <button class="btn" onclick="showCourseDetails('Малки Технологични Майстори')">Разгледай курса</button>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <div class="course-icon">
+                            <img src="Screenshot 2025-08-21 231208.png" alt="Course Icon">
+                        </div>
+                        <div class="course-title">
+                            <h2>ИгрoКод Майстори</h2>
+                        </div>
+                    </div>
+                    <div class="course-info">
+                        <p>Деца 3–4 клас / 8–9 г.</p>
+                    </div>
+                    <div class="course-benefits">
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Блоково програмиране (Scratch и подобни платформи)</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Създаване на собствени игри и анимации</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Напреднали ИТ операции</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Развитие на логическо мислене и креативност</span>
+                        </div>
+                    </div>
+                    <div class="cta-button-a">
+                        <button class="btn" onclick="showCourseDetails('ИгрoКод Майстори')">Разгледай курса</button>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <div class="course-icon">
+                            <img src="Screenshot 2025-08-21 231208.png" alt="Course Icon">
+                        </div>
+                        <div class="course-title">
+                            <h2>Код и Игри 2.0</h2>
+                        </div>
+                    </div>
+                    <div class="course-info">
+                        <p>Деца 4–5 клас / 9–10 г.</p>
+                    </div>
+                    <div class="course-benefits">
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Създаване на по-сложни игри</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Работа с по-детайлни алгоритми</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Основи в уеб технологиите и сайтовете</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Работа по по-дълги и комплексни проекти</span>
+                        </div>
+                    </div>
+                    <div class="cta-button-a">
+                        <button class="btn" onclick="showCourseDetails('Код и Игри 2.0')">Разгледай курса</button>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <div class="course-icon">
+                            <img src="Screenshot 2025-08-21 231208.png" alt="Course Icon">
+                        </div>
+                        <div class="course-title">
+                            <h2>Python Първи Стъпки</h2>
+                        </div>
+                    </div>
+                    <div class="course-info">
+                        <p>Деца 5–6 клас / 10–11 г.</p>
+                    </div>
+                    <div class="course-benefits">
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Запознаване с езика Python</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Основни програмни конструкции (променливи, цикли, условия)</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Решаване на задачи чрез код</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Първи малки проекти с Python</span>
+                        </div>
+                    </div>
+                    <div class="cta-button-a">
+                        <button class="btn" onclick="showCourseDetails('Python Първи Стъпки')">Разгледай курса</button>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <div class="course-icon">
+                            <img src="Screenshot 2025-08-21 231208.png" alt="Course Icon">
+                        </div>
+                        <div class="course-title">
+                            <h2>Python Game Lab</h2>
+                        </div>
+                    </div>
+                    <div class="course-info">
+                        <p>Деца 6–7 клас / 11–12 г.</p>
+                    </div>
+                    <div class="course-benefits">
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Разработка на игри с Python</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Работа с графики и анимации</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Създаване на интерактивни приложения</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="checkmark">✓</div>
+                            <span>Изграждане на завършени проекти</span>
+                        </div>
+                    </div>
+                    <div class="cta-button-a">
+                        <button class="btn" onclick="showCourseDetails('Python Game Lab')">Разгледай курса</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Information Section -->
+            <div id="info-section" class="section">
+                <div class="info-section">
+                    <h2>За курсовете</h2>
+                    <p>Нашите курсове по програмиране са създадени специално за ученици от 1. до 8. клас (6–14 години). Те са структурирани така, че да съчетават забавление с реални практически умения.</p>
+
+                    <h3>Продължителност и структура</h3>
+                    <p>Всеки курс е разделен на две нива (два модула), като едно ниво съответства на един учебен срок (15 седмици). Пълният курс продължава 30 седмици.</p>
+
+                    <h3>Занятия</h3>
+                    <p>Занятията се провеждат веднъж седмично по 90 минути, като се редуват теория и практика чрез игри, проекти и упражнения.</p>
+
+                    <h3>Място на провеждане</h3>
+                    <p>Курсовете са присъствени, организирани като извънкласна дейност в училището на децата.</p>
+
+                    <h3>Цени и плащане</h3>
+                    <ul>
+                        <li><strong>Цена за цял курс (30 седмици):</strong> 842 лв.</li>
+                        <li><strong>Цена за един модул (15 седмици):</strong> 421 лв.</li>
+                        <li>Възможност за заплащане на веднъж или на месечни вноски.</li>
+                        <li><strong>Отстъпки:</strong> 5–10% за братя/сестри и за деца, които се записват за първа година при нас.</li>
+                    </ul>
+
+                    <h3>Наваксващи уроци</h3>
+                    <p>В цената на курса са включени 3 индивидуални наваксващи сесии, които могат да се използват при пропуснато занятие или при нужда от допълнителна помощ.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div id="faq-section" class="section">
+                <div class="faq-section">
+                    <h2>Често задавани въпроси (ЧЗВ)</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Колко дълъг е един курс и как е структуриран?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Курсът е с продължителност 30 седмици, разделени в 2 модула по 15 седмици (по един учебен срок).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Колко време продължава едно занятие и колко често се провеждат?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Занятията са веднъж седмично по 90 минути.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>В кои дни и часове се провеждат курсовете?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Дните и часовете се уточняват индивидуално за всяка група. Моля, свържете се с нас за повече информация.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Къде се провеждат занятията?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Курсовете се провеждат присъствено като извънкласна дейност в училището на децата.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>За кои възрастови групи са подходящи?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Подходящи са за ученици от 1. до 8. клас (6–14 години).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Каква е цената на курса и какви са начините на плащане?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Цената за пълен курс е 842 лв., като може да се запише и само за един модул – 421 лв. Сумата може да се заплати наведнъж или на месечни вноски.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Има ли отстъпки при записване?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да. Предлагаме отстъпка 5–10% за братя/сестри и за ученици, които се записват при нас за първа година.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Колко деца има в една група?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Групите са между 8 и 10 деца, за да осигурим индивидуално внимание и ефективно обучение.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Нужно ли е детето да има предварителни знания по програмиране?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Не. Курсовете започват с въведение, така че са подходящи и за начинаещи.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Какво ще може детето ми да прави след завършване на курса?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Детето ще има основни знания и умения, за да продължи към следващо ниво или курс, както и да създава собствени малки проекти.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Как мога да запиша детето си?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Можете да се свържете с нас на +359 879 185 018 или да използвате бутона „Запиши се" в сайта.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Какво се случва, ако детето пропусне занятие?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Включени са 3 наваксващи урока, които могат да се ползват с предварителна уговорка – за пропуснато занятие или като индивидуална подкрепа.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="signup-section" class="signup-section">
+            <h3>Готови ли са децата ви за дигиталното бъдеще?</h3>
+            <div class="action-buttons">
+                <a href="#contact" class="action-cta-primary">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                    Запиши се
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Function to load external HTML content
+        async function loadComponent(url, containerId) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                const container = document.getElementById(containerId);
+                container.innerHTML = html;
+                container.classList.add('loaded');
+
+                // Execute any scripts in the loaded content
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.textContent = script.textContent;
+                    }
+                    document.head.appendChild(newScript);
+                });
+            } catch (error) {
+                console.error(`Error loading ${url}:`, error);
+            }
+        }
+
+        // Load navbar and footer
+        document.addEventListener('DOMContentLoaded', async () => {
+            await Promise.all([
+                loadComponent('navbar.html', 'navbar-container'),
+                loadComponent('footer.html', 'footer-container')
+            ]);
+        });
+
+        function showCourseDetails(courseName) {
+            // Simple alert for now - in a real application this would navigate to a course details page
+            alert(`Интересувате се от курса "${courseName}"!\n\nСвържете се с нас за повече информация и записване:\n📞 Телефон: 0888 123 456\n📧 Email: info@logikids-academy.bg`);
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isActive = element.classList.contains('active');
+
+            // Close all other FAQ items
+            const allQuestions = document.querySelectorAll('.faq-question');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+
+            allQuestions.forEach(q => q.classList.remove('active'));
+            allAnswers.forEach(a => a.classList.remove('active'));
+
+            // Toggle current item if it wasn't active
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to course cards
+            const courseCards = document.querySelectorAll('.course-card');
+
+            courseCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click effects to buttons
+            const buttons = document.querySelectorAll('.btn');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.6);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                    `;
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add CSS for ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Scroll animations
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimations() {
+            const cards = document.querySelectorAll('.course-card');
+            cards.forEach(card => {
+                if (isElementInViewport(card)) {
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimations);
+        window.addEventListener('resize', handleScrollAnimations);
+    </script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Благодарим ви за регистрацията!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .register * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.register {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 100px 0 20px; /* горният padding = височината на навбара */
+
+}
+
+/* Container */
+.register .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    animation: register-slideUp 0.8s ease-out;
+}
+
+/* Animation */
+@keyframes register-slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.register .header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.register .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+}
+
+.register .header-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.register .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.register .logo svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+}
+
+.register .header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.register .header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Form Container */
+.register .form-container {
+    padding: 50px 40px;
+}
+
+.register .form-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.register .form-title h2 {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.register .form-title .subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Form Layout */
+.register .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.register .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.register .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.register .form-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.register .form-group label svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.register .required {
+    color: #ef4444;
+    margin-left: 4px;
+}
+
+.register .form-group input,
+.register .form-group textarea {
+    padding: 14px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+}
+
+.register .form-group input:focus,
+.register .form-group textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    transform: translateY(-2px);
+}
+
+.register .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submit Button */
+.register .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.register .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.register .submit-btn:active {
+    transform: translateY(0);
+}
+
+.register .submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.register .submit-btn:hover::before {
+    left: 100%;
+}
+
+/* Footer */
+.register .footer-text {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .register {
+        padding: 10px;
+    }
+
+    .register .container {
+        margin: 10px;
+        border-radius: 15px;
+    }
+
+    .register .header {
+        padding: 30px 20px;
+    }
+
+    .register .header h1 {
+        font-size: 2rem;
+    }
+
+    .register .form-container {
+        padding: 30px 20px;
+    }
+
+    .register .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .register .form-title h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .register .header h1 {
+        font-size: 1.75rem;
+    }
+
+    .register .header p {
+        font-size: 1rem;
+    }
+
+    .register .form-container {
+        padding: 25px 15px;
+    }
+}
+
+/* Loading State */
+.register.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.register.loading .submit-btn {
+    background: #9ca3af;
+}
+
+/* Success Message */
+.register .success-message {
+    background: #ecfdf5;
+    border: 2px solid #10b981;
+    border-radius: 12px;
+    padding: 16px;
+    color: #065f46;
+    margin-bottom: 20px;
+    display: none;
+}
+
+
+    /* Component containers */
+    #navbar-container,
+    #footer-container {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+      background: transparent !important;
+    }
+    #navbar-container.loaded,
+    #footer-container.loaded {
+      opacity: 1;
+    }
+    #navbar-container { text-align: initial; }
+    #footer-container { text-align: left; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Container -->
+  <div id="navbar-container"></div>
+
+  <!-- Main Content -->
+  <div class="register">
+  <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2981" height="2352" viewBox="0 0 2981 2352"><path fill="white" d="M2293.17 32.3455C2309.35 31.8252 2335.11 31.525 2351.32 32.2625C2351.29 32.2438 2414.4 45.8102 2421.53 47.9043C2481.24 65.4506 2544.52 92.6814 2593.95 123.764C2718 201.773 2780.13 314.647 2793.05 437.579C2799.04 494.554 2795.49 552.025 2790.43 608.96C2783.21 690.307 2772.63 771.052 2761.62 852.136L2748.7 946.766C2747.53 954.686 2741.47 987.157 2742.28 993.116C2761.76 1003.8 2794.99 1011.42 2817.83 1023.4C2954.98 1095.36 2950.84 1239.35 2851.25 1332.3C2825.75 1356.1 2785.04 1387.85 2777.13 1419.31C2769.92 1462.07 2774.75 1510.72 2776.85 1554.1L2782.53 1667.42C2785.81 1739.86 2791.17 1811.61 2797.55 1883.91C2798.2 1896.6 2797.51 1909.57 2798.08 1922.23C2801.92 2008.01 2803 2090.3 2740.31 2164.76C2682.89 2232.96 2603.8 2287.44 2498.95 2302.04C2488.73 2303.47 2475 2301.25 2464.29 2302.01C2399.75 2305.86 2349.44 2287.5 2297.01 2259.18C2252.66 2235.23 2207.31 2200.31 2196.2 2156.79C2192.4 2141.93 2192.47 2128.89 2189.18 2116.1L2185.88 2114.4C2168.76 2113.8 2145.32 2120.91 2128.92 2120.9C2052.61 2120.83 1976.04 2120.82 1899.76 2120.83L1429.83 2120.97C1421.58 2120.97 1404.92 2121.33 1397.08 2120.58C1391.28 2120.02 1379.84 2114.45 1371.59 2114.81C1361.15 2115.09 1348.64 2121.27 1338.46 2121.17C1267 2120.46 1195.38 2121.08 1123.93 2120.84C1081.91 2120.69 1040.69 2120.76 998.845 2123.97C985.492 2124.99 972.723 2127 959.182 2127.36C907.909 2128.71 856.943 2125.49 806.347 2119.06C792.158 2117.27 761.085 2103.93 750.082 2106.4C747.614 2108.74 739.848 2135.82 737.078 2142.14C700.087 2226.56 598.038 2261.32 493.694 2231.11C403.908 2205.11 343.066 2169.04 296.212 2102.81C246.967 2033.19 207.062 1955.06 189.442 1876.23C176.489 1809.6 191.872 1739.1 205.252 1673.41L226.925 1566.7C232.563 1539.9 241.766 1505.64 243.398 1479.22C245.506 1445.11 231.616 1379.9 212.682 1349.09C169.632 1329.4 129.664 1304.57 106.449 1269.85C60.114 1200.53 75.6626 1120.11 139.683 1061.3C172.719 1030.95 194.486 1024.15 212.117 984.891C247.033 907.146 230.442 822.565 216.631 743.008C209.16 699.97 199.947 659.212 191.675 616.689C186.115 588.11 179.349 549.085 176.896 520.451C169.965 439.559 171.116 365.004 202.119 287.044C238.141 196.461 306.863 126.264 414.09 81.3533C484.148 52.0104 582.456 32.1785 660.602 49.9602C715.486 62.4489 770.706 95.5765 803.241 132.222C812.829 143.022 823.804 160.573 831.975 172.81C881.227 174.933 954.097 173.2 1004.57 173.206L1341.96 173.227L1469.96 173.113C1511.12 173.066 1537.76 170.474 1577.42 181.166C1618.63 171.536 1636.42 173.09 1679.08 173.13L1794.01 173.231C1904.98 173.254 2026.91 175.106 2136.78 172.954C2136.85 138.917 2145.26 111.723 2171.6 83.3319C2193.46 59.7698 2252.55 36.7427 2288.35 34.1455L2291.03 33.9626L2293.17 32.3455Z"/><path fill="#0C3FD7" d="M888.089 289.963C1079.69 288.234 1272.52 290.708 1464.24 289.959C1477.04 289.909 1521.57 289.611 1532.11 292.07C1543.88 301.604 1563.99 350.509 1569.49 365.676C1604.97 463.458 1624.78 567.823 1625.15 669.683C1648.53 651.32 1654.57 642.176 1684.3 626.981C1752.37 592.184 1832.61 618.636 1871.12 671.153C1904.42 716.573 1908.59 763.593 1893.26 814.245C1861.46 919.359 1708.42 957.812 1630.79 859.439C1624.34 851.277 1619.82 841.262 1613.59 832.387C1609.21 849.109 1608.17 867.15 1602.67 885.558C1586.71 938.943 1567.63 991.71 1543.61 1043.21C1535.59 1060.4 1527.53 1081.27 1518.41 1097.64C1487.79 1089.97 1441.1 1070.02 1409.81 1058.97C1396.44 1054.02 1315.15 1025.46 1309.59 1021.1C1308.78 1006.83 1314.88 970.666 1316.07 953.104C1321.2 885.715 1296.38 813.238 1236.55 763.817C1126.09 672.586 960.277 709.47 897.527 819.535C859.955 885.434 867.938 929.902 865.904 997.527C804.438 1003.92 738.225 1028.66 688.82 1057.38C680.98 1061.94 654.895 1076.57 646.549 1076.9C642.585 1073.34 641.396 1056.56 641.356 1051.46C640.001 879.716 644.301 707.757 642.316 536.026C641.447 460.789 651.046 396.352 721.231 340.108C771.611 299.736 818.292 290.492 888.089 289.963Z"/><path fill="#6DE807" d="M1732.94 289.97C1856.43 289.039 1980.84 290.108 2104.42 289.318C2169.84 288.9 2224.4 303.955 2269.51 342.565C2356.33 416.867 2350.1 507.785 2349.54 601.004L2348.04 784.564C2346.84 948.647 2352 1106.78 2345.64 1271.32C2334.83 1275.55 2304.13 1280.65 2290.58 1284C2248.15 1294.51 2206.36 1301.55 2161.92 1304.65C2114.22 1307.97 2066.65 1305.26 2019.12 1305.59C2043.46 1343.88 2056.31 1370.98 2056.32 1414.6C2056.44 1458.38 2040.89 1504.18 2000.31 1535.67C1946.17 1577.69 1861.81 1575.19 1808.87 1533.49C1741.25 1479.7 1732.28 1384.85 1781.82 1321.02C1797.62 1300.67 1815.61 1287.13 1836.78 1270.46C1836.43 1266.5 1798.76 1254.41 1791.31 1251.09C1727.41 1222.61 1664.06 1192.54 1608.28 1154.64C1600.18 1149.15 1588.95 1144.36 1583.35 1137.25C1582.05 1131.33 1609.95 1073.29 1614.1 1063.07C1625.72 1034.47 1636.37 999.993 1651.58 972.822C1653.54 971.955 1655.1 971.738 1657.31 972.536C1729.99 998.671 1798.7 998.581 1865.72 960.064C1925.86 925.506 1961.1 862.342 1972.48 804.501C1985.88 736.388 1965.12 661.48 1912.31 605.813C1868.73 559.454 1816.62 540.067 1743.64 538.352C1727.94 537.984 1703.41 540.945 1690.15 539.488C1688.01 538.063 1687.31 537.905 1686.86 535.51C1673.69 465.443 1656.78 396.239 1630.64 328.352C1627.73 320.799 1619.37 299.299 1623.82 292.886C1638.29 289.578 1712.74 290.117 1732.94 289.97Z"/><path fill="#FEAD26" d="M1087.75 783.697C1209.14 785.702 1264.98 901.275 1237.76 982.075C1227.49 1012.57 1204.61 1039.69 1179.81 1063.96C1277.85 1086.52 1375.61 1121.49 1465.84 1160.34C1467.86 1161.5 1472 1164.21 1471.24 1166.56C1460.66 1199.08 1437.86 1240.59 1422.05 1271.2C1410.75 1293.08 1389.09 1353.78 1375.83 1366.97C1346.18 1363.25 1318.37 1348.51 1283.97 1346.82C1040.96 1334.9 980.525 1613.04 1114.44 1733.37C1173.2 1786.17 1218.94 1788.01 1301.65 1793.95C1304.84 1806.45 1305.9 1830.06 1308.06 1843.93C1314.99 1888.35 1320.47 1948.07 1335.1 1990.55C1336.82 1994.47 1338.44 1996.68 1337.13 2000.64C1329.14 2005.11 1266.27 2004 1252.25 2003.73C1178.32 2002.35 1106.99 2002.93 1032.76 2005.76C909.587 2010.44 795.799 2024.79 708.58 1939.21C630.403 1862.5 640.523 1791.65 640.837 1699.69L641.091 1527.1L640.654 1316.98C640.471 1266.3 638.555 1212.66 644.656 1162.39C707.76 1116.81 830.173 1072.02 914.593 1057.77C938.22 1053.78 963.15 1052.74 987.262 1052.63C958.756 1022.35 946.405 1003.13 940.592 964.939C933.379 917.543 943.994 863.829 982.471 825.671C1008.7 799.657 1046.98 787.5 1087.75 783.697Z"/><path fill="#EB1C68" d="M1539.9 1203C1564.21 1206.55 1648.21 1265.4 1674.23 1276.17C1679.61 1278.4 1699.83 1290.61 1705.43 1294.48C1700.06 1324.76 1682.68 1359.66 1679.1 1392.01C1672.23 1457.99 1693.32 1523.18 1745.73 1575.13C1817.99 1646.76 1933.15 1663.06 2025.26 1603.5C2092.36 1560.11 2117.36 1501.28 2125.03 1434.76C2127.21 1415.88 2126.7 1395.94 2129.4 1377.21C2176.05 1376.08 2201.44 1372.9 2246.03 1364.68C2258.37 1362.41 2339.74 1345.27 2346.49 1345.39L2348.37 1347.13C2350.18 1353.87 2349.49 1360.44 2349.35 1367.29C2348.85 1390.21 2349.26 1413.12 2349.44 1436.04L2349.43 1663.68C2349.51 1758.41 2362.95 1853.29 2285.24 1933.77C2238.97 1981.69 2216.26 1986.05 2145.49 2000.4C2129.14 2001.33 2112.66 2004.04 2096.23 2004.37C2064.26 2005.01 2031.94 2004.87 1999.95 2004.81L1835.15 2004.59L1416.26 2004.76C1405.59 1978.95 1398.66 1950.68 1392.1 1924.12C1374.83 1854.2 1364.73 1782.4 1370.67 1711.14C1371.46 1701.6 1373.15 1691.85 1373.13 1682.32L1370.45 1682.84C1328.26 1717.79 1282.33 1733.47 1222.49 1717.16C1116.16 1688.18 1093.27 1578.4 1124.69 1503.83C1150.94 1441.53 1229.42 1399.95 1311.05 1421.78C1358.68 1434.51 1384.13 1470.59 1403.9 1504.32C1409.09 1495.04 1413.7 1480.1 1417.27 1469.98L1436.21 1416.4C1463.38 1339.76 1489.26 1272.55 1539.9 1203Z"/><path fill="#040453" d="M2304.58 150.696C2343.64 146.431 2392.29 162.649 2426.6 175.217C2696.55 274.121 2691.35 450.301 2666.5 651.876C2656.07 736.483 2646.09 824.42 2633.59 909.899C2627.7 950.103 2611.83 1018.11 2628.3 1055C2644.17 1093.45 2694.87 1103.62 2735.84 1118.3C2879.22 1169.67 2765.99 1245.19 2708.28 1304.6C2690.75 1322.65 2669.28 1358.96 2663.29 1381.67C2650.28 1431.04 2655.79 1484.88 2656.59 1535.08C2656.08 1567.83 2661.54 1601.44 2661.73 1633.99C2662.5 1761.91 2687.16 1890 2678.92 2017.82C2674.69 2083.44 2595.04 2154.29 2519.21 2176.27C2503.71 2180.84 2485.48 2184.46 2468.97 2185.3C2409.42 2188.36 2345.2 2157.3 2308.64 2122.07C2342.93 2078.27 2428.77 2065.72 2461.05 2008.19C2498.26 1942.64 2482.47 1865.27 2478.94 1795.64C2475.15 1720.99 2471.36 1645.56 2463.7 1571.04C2455.67 1505.07 2447.43 1442.83 2457.22 1376.72C2468.06 1303.48 2506.59 1249.5 2540.53 1183.16C2495.96 1132.47 2460.03 1088.54 2437.47 1028.59C2405.89 944.629 2420.48 869.703 2436.6 785.134C2445.56 738.066 2455.64 687.341 2462.17 639.98C2468.34 595.271 2467.01 541.908 2466.88 496.49C2466.76 454.391 2466.73 414.764 2459.32 372.74C2452.3 322.473 2382.77 287.587 2334.11 260.366C2277 228.42 2270.6 222.643 2254.97 168.897C2265.86 160.078 2289.59 154.795 2304.58 150.696Z"/><path fill="#040453" d="M582.202 161.314C614.401 158.614 645.975 167.642 672.914 180.884C693.84 191.17 724.038 214.074 728.112 234.083C738.376 284.505 642.06 289.39 601.552 308.49C567.373 324.605 545.844 338.904 523.862 364.879C498.496 394.851 485.115 431.11 483.463 466.742C482.371 490.301 487.231 519.633 490.887 543.117C498.109 589.511 509.536 635.417 519.063 681.455C533.19 749.725 543.3 819.164 548.894 888.183C551.915 925.459 554.228 964.109 552.296 1001.46C550.789 1030.59 543.422 1068.98 531.107 1096.18C516.919 1127.53 478.088 1159.2 481.229 1194.72C484.078 1226.94 511.07 1259.4 523.498 1289.83C549.892 1354.46 563.352 1419.39 562.729 1487.2C562.346 1528.99 559.596 1565.78 551.753 1606.75C535.319 1692.61 507.928 1776.48 522.079 1863.68C528.477 1903.1 537.552 1963.86 563.311 1998.28C590.349 2034.41 619.343 2041.61 631.556 2088.11C624.238 2103.09 612.578 2115.19 593.036 2121.24C562.518 2130.69 536.038 2119.69 508.439 2110.21C487.597 2102.51 465.752 2095.74 447.332 2084.48C403.715 2057.8 378.505 2015.46 357.357 1976.35C335.632 1936.18 316.13 1898.71 307.22 1855.33C297.917 1810.04 307.246 1769.45 316.359 1724.76C324.531 1684.68 331.79 1644 340.733 1603.98C354.629 1541.81 372.678 1477.45 358.197 1413.55C349.069 1373.28 328.786 1291.58 294.377 1259.72C276.372 1245.28 249.353 1235.69 229.214 1223.67C152.781 1178.04 240.617 1138.18 276.163 1101.91C286.655 1091.21 297.44 1076.09 304.868 1063.53C400.64 901.613 325.074 716.051 300.653 548.182C285.575 446.27 281.742 337.437 364.544 252.268C414.012 201.386 503.378 168.932 582.202 161.314Z"/><path fill="white" fill-opacity="0.011764706" d="M2293.17 32.3455C2295.36 29.5269 2296.73 26.3083 2301.34 25.9872C2316.14 24.9552 2341.56 21.6922 2351.32 32.2625C2335.11 31.525 2309.35 31.8252 2293.17 32.3455Z"/></svg>
+                </div>
+                <h1>Logikids</h1>
+                <p>Свържете се с нас за нашите образователни програми за деца</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-title">
+                <h2>Запишете детето си на курс по програмиране в Logikids!</h2>
+                <p class="subtitle">След регистрация ще се свържем с вас по телефон или имейл за потвърждение. Ако никой не се свърже с вас в срок от 3 дни, моля пишете на info@logikids.bg или се обадете на +359879185018.
+                  Моля, попълнете всички задължителни полета (*)</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <strong>Успех!</strong> Вашето съобщение беше изпратено успешно. Ще се свържем с вас скоро!
+            </div>
+
+            <form action="https://formsubmit.co/register@logikids.me" method="POST" id="contactForm">
+                <div class="form-grid">
+                    <!-- Email -->
+                    <div class="form-group full-width">
+                        <label for="email">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            Email адрес <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com">
+                    </div>
+
+                    <!-- Child Name -->
+                    <div class="form-group">
+                        <label for="child_name">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            Име на детето <span class="required">*</span>
+                        </label>
+                        <input type="text" id="child_name" name="Име на детето" required placeholder="Име и фамилия">
+                    </div>
+
+                    <!-- Parent Name -->
+                    <div class="form-group">
+                        <label for="parent_name">
+                            <svg fill="currentColor" width="800px" height="800px" viewBox="-1 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg"><path d="M7.181 15.129a1.81 1.81 0 0 0 .223.872H1.85a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.75 9.667h5.478a3.177 3.177 0 0 0 .557 1.067 3.135 3.135 0 0 0-2.604 3.086zM6.6 8.717a3.236 3.236 0 1 1 3.236-3.236A3.236 3.236 0 0 1 6.6 8.717zm9.817 6.412a.875.875 0 0 1-.872.872H9.003a.875.875 0 0 1-.872-.872V13.82a2.187 2.187 0 0 1 2.18-2.18h3.925a2.187 2.187 0 0 1 2.18 2.18zm-1.915-6.372a2.228 2.228 0 1 1-2.228-2.228 2.228 2.228 0 0 1 2.228 2.228z"/></svg>
+                            Име на родител/настойник <span class="required">*</span>
+                        </label>
+                        <input type="text" id="parent_name" name="Родител" required placeholder="Име и фамилия">
+                    </div>
+
+                    <!-- School -->
+                    <div class="form-group">
+                        <label for="school">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
+                            Училище <span class="required">*</span>
+                        </label>
+                        <input type="text" id="school" name="Училище" required placeholder="Име на училището">
+                    </div>
+
+                    <!-- Class -->
+                    <div class="form-group">
+                        <label for="class">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
+                            Клас <span class="required">*</span>
+                        </label>
+                        <input type="text" id="class" name="Клас" required placeholder="напр. 3-ти клас">
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group full-width">
+                        <label for="phone">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            Телефонен номер <span class="required">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="Телефон" required placeholder="+359 888 123 456">
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="form-group">
+                        <label for="extra_info">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/>
+                            </svg>
+                            Допълнителна информация
+                        </label>
+                        <textarea id="extra_info" name="Допълнителна информация" placeholder="Споделете допълнителна информация за нуждите на детето си..."></textarea>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                            </svg>
+                            Съобщение и въпроси
+                        </label>
+                        <textarea id="message" name="Съобщение" placeholder="Напишете вашите въпроси или коментари тук..."></textarea>
+                    </div>
+
+                    <!-- Source -->
+                    <div class="form-group full-width">
+                        <label for="source">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            От къде научихте за Logikids?
+                        </label>
+                        <input type="text" id="source" name="Източник" placeholder="Facebook, Google, препоръка от приятел...">
+                    </div>
+                </div>
+
+                <!-- Hidden fields -->
+                <input type="hidden" name="_next" value="https://logikids.bg/thanks">
+                <input type="hidden" name="_captcha" value="false">
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; display: inline;">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    Изпрати съобщението
+                </button>
+
+                <div class="footer-text">
+                    <p>Всички полета маркирани със * са задължителни. Вашите данни ще бъдат обработени конфиденциално.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Footer Container -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Load navbar and footer
+    async function loadComponent(url, containerId) {
+      try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        container.innerHTML = html;
+        container.classList.add('loaded');
+
+        // Execute any scripts in the loaded content
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.src) newScript.src = script.src;
+          else newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await Promise.all([
+        loadComponent('navbar.html', 'navbar-container'),
+        loadComponent('footer.html', 'footer-container')
+      ]);
+    });
+  </script>
+
+</body>
+</html>
