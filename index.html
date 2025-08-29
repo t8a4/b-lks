@@ -300,10 +300,13 @@
 
         /* Divider SVG */
         .divider-svg {
-            width: 100%;
-            height: 120px;
-            margin: 0;
-        }
+  width: 100%;
+  height: 120px;
+  margin: 0;
+}
+
+.divider-svg.desktop { display: block; }
+.divider-svg.mobile { display: none; }
 
         /* Second section styles */
         .des2-container {
@@ -480,6 +483,8 @@
             .des2-features-grid {
                 grid-template-columns: 1fr;
             }
+			.divider-svg.desktop { display: none; }
+  .divider-svg.mobile { display: block; }
         }
 
         @media (max-width: 480px) {
@@ -685,7 +690,14 @@
             </div>
         </div>
         <!-- Divider lines -->
-        <svg class="divider-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 120" fill="none" stroke-width="3">
+        <svg class="divider-svg desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 120" fill="none" stroke-width="3">
+            <path d="M-50 60 C200 40, 400 80, 600 60 S1000 90, 1400 50 S1800 70, 1850 60" stroke="#6E65C7"/>
+            <path d="M-50 65 C250 90, 500 50, 750 75 S1200 40, 1500 85 S1850 55, 1850 65" stroke="#6976DF"/>
+            <path d="M-50 55 C220 30, 480 90, 800 50 S1300 95, 1600 35 S1850 70, 1850 55" stroke="#7451AA"/>
+            <path d="M-50 70 C280 75, 560 45, 900 70 S1350 40, 1650 80 S1850 60, 1850 70" stroke="#7988E6"/>
+        </svg>
+
+		<svg class="divider-svg mobile" xmlns="http://www.w3.org/2000/svg" viewBox="821 0 821 120" fill="none" stroke-width="3">
             <path d="M-50 60 C200 40, 400 80, 600 60 S1000 90, 1400 50 S1800 70, 1850 60" stroke="#6E65C7"/>
             <path d="M-50 65 C250 90, 500 50, 750 75 S1200 40, 1500 85 S1850 55, 1850 65" stroke="#6976DF"/>
             <path d="M-50 55 C220 30, 480 90, 800 50 S1300 95, 1600 35 S1850 70, 1850 55" stroke="#7451AA"/>
@@ -868,4 +880,5 @@
 </body>
 
 </html>
+
 
