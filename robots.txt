@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /thanks
+Disallow: /courses-error
+Allow: /
+Sitemap: https://logikids.bg/sitemap.xml
