@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс Python Първи Стъпки - Logikids</title>
+
+    <meta property="og:type" content="website">
+	<meta property="og:title" content="Курс Python Първи Стъпки - Logikids">
+	<meta property="og:description" content="Забавни курсове по програмиране за деца.">
+	<meta property="og:url" content="https://logikids.bg/kurs-python-purvi-stupki">
+	<meta property="og:image" content="https://logikids.bg/files/link-logo-image.png">
+
+    <link rel="icon" type="image/x-icon" href="https://logikids.bg/files/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .course-page * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .course-page {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f8fafc;
+            --primary-color: #6366f1;
+            --secondary-color: #f59e0b;
+            --accent-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .course-page .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .course-page .course-header {
+            background: var(--gradient-1);
+            color: white;
+            padding: 200px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-page .course-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .course-page .course-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-page .course-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .course-page .course-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Layout */
+        .course-page .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            padding: 60px 0;
+            align-items: start;
+        }
+
+        .course-page .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .course-page .content-section {
+            padding: 40px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .course-page .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .course-page .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .course-page .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .course-page .content-section p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .course-page .content-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-page .content-section li {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .course-page .content-section li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Highlights Grid */
+        .course-page .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .course-page .highlight-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .course-page .highlight-item h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .course-page .highlight-item p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Grid */
+        .course-page .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .course-page .skills-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* Sticky Sidebar */
+        .course-page .sidebar {
+            position: sticky;
+            top: 120px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .course-page .sidebar h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .course-page .sidebar .subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .course-page .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-page .sidebar li {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .course-page .sidebar li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Call to Action */
+        .course-page .cta-section {
+            background: var(--gradient-1);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .course-page .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .course-page .cta-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 18px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .course-page .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Component containers */
+        #navbar-container,
+        #footer-container {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #navbar-container.loaded,
+        #footer-container.loaded {
+            opacity: 1;
+        }
+
+        /* Card Styling */
+        .course-page .course-card {
+            width: 360px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .course-page .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        /* Header & Icon */
+        .course-page .card-header {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .course-page .course-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .course-page .course-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-page .course-title h2 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Info Section */
+        .course-page .course-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            padding: 12px 25px;
+            color: #475569;
+            margin: 0 20px 25px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Benefits */
+        .course-page .course-benefits {
+            padding: 0 30px 10px 30px;
+        }
+
+        .course-page .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .course-page .checkmark {
+            width: 20px;
+            height: 20px;
+            background: #4299e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Custom checkmark colors */
+        .course-page .course-benefits .benefit-item:nth-child(1) .checkmark { background: #0c3fd8; }
+        .course-page .course-benefits .benefit-item:nth-child(2) .checkmark { background: #6de907; }
+        .course-page .course-benefits .benefit-item:nth-child(3) .checkmark { background: #ec1c68; }
+        .course-page .course-benefits .benefit-item:nth-child(4) .checkmark { background: #ffad26; }
+
+        /* CTA Button */
+        .course-page .cta-button-a {
+            margin: 20px 30px 30px 30px;
+        }
+
+        .course-page .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-page .btn:hover {
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        .course-page .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .course-page .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Remove background and padding when sidebar only contains a card */
+        .course-page .sidebar.no-bg {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        /* Make the course card fill the sidebar */
+        .course-page .sidebar .course-card {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        .course-page .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .course-page .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes ripple {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-page .main-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .course-page .sidebar {
+                position: static;
+                order: -1;
+                margin-bottom: 30px;
+            }
+
+            .course-page .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .course-page .sidebar.no-bg {
+                position: static;
+                margin-top: 20px;
+                padding: 0;
+            }
+
+            .course-page .sidebar .course-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .course-page .course-header {
+                padding: 165px 0 60px !important;
+            }
+
+            .course-page .course-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .course-page .course-header p {
+                font-size: 1.1rem;
+            }
+
+            .course-page .main-layout {
+                padding: 40px 0;
+            }
+
+            .course-page .content-section {
+                padding: 30px 25px;
+            }
+
+            .course-page .sidebar {
+                padding: 25px;
+            }
+
+            .course-page .cta-section {
+                padding: 60px 0;
+            }
+
+            .course-page .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course-page .course-header {
+                padding: 90px 0 50px;
+            }
+
+            .course-page .course-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .course-page .content-section {
+                padding: 25px 20px;
+            }
+
+            .course-page .sidebar {
+                padding: 20px;
+            }
+
+            .course-page .container {
+                padding: 0 15px;
+            }
+
+            .course-page .course-card {
+                width: 100%;
+            }
+
+            .course-page .card-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .course-page .course-benefits {
+                padding: 0 20px 10px 20px;
+            }
+
+            .course-page .cta-button-a {
+                margin: 20px;
+            }
+        }
+    </style>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-624SYFHC0F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-624SYFHC0F');
+</script>
+  
+</head>
+<body>
+
+        <!-- Navbar Container -->
+        <div id="navbar-container"></div>
+
+    <div class="course-page">
+
+        <!-- Course Header -->
+        <section class="course-header">
+            <div class="container">
+                <div class="course-header-content fade-in">
+                    <h1>Курс Python Първи Стъпки</h1>
+                    <p>Въведение в езика Python и решаването на задачи чрез код.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Layout -->
+        <div class="container">
+            <div class="main-layout">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Why Join Section -->
+                    <div class="content-section fade-in">
+                        <h2>За курса</h2>
+                        <p>„Python Първи Стъпки“ е курс за ученици от 5–6 клас (10–11 години), които искат да се запознаят с един от най-популярните езици за програмиране. Децата ще усвоят основните програмни конструкции – променливи, цикли, условия – и ще се научат да решават задачи чрез код. Курсът включва и първи малки практически проекти, които ще затвърдят наученото.</p>
+                    </div>
+
+                    <div class="content-section fade-in">
+                        <h2>Практически резултати</h2>
+                    <div class="skills-column">
+                                <h4>В края на курса детето ще може:</h4>
+                                <ul>
+                                    <li>Да пише базов код на Python</li>
+                                    <li>Да използва променливи, цикли и условни конструкции</li>
+                                    <li>Да решава логически задачи чрез програмиране</li>
+                                    <li>Да създаде първи малки Python проекти</li>
+                                </ul>
+                            </div>
+                    </div>
+
+                    <div class="content-section fade-in">
+                        <h2>Учебна програма, създадена за деца</h2>
+                        <p>Децата се обучават по специално разработена програма, съобразена с тяхната възраст и интереси.
+                            Тя е изградена така, че ученето да бъде забавно и увлекателно, а новата информация да се запомня
+                            лесно чрез игри, упражнения и практически задачи. <br> <br> По време на занятията децата използват различни софтуери и платформи, което прави ученето разнообразно и им дава по-широк поглед върху дигиталния свят. Така те не просто усвояват нови знания, а преживяват ученето като приключение, което ги вдъхновява да откриват и създават. </p>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="content-section fade-in">
+                        <h2>Информация</h2>
+                        <div class="skills-grid">
+                            <div class="skills-column">
+                                <h4>Структура и организация</h4>
+                                <ul>
+                                    <li>Продължителност: 30 седмици (2 модула по 15 седмици)</li>
+                                    <li>Занятия: веднъж седмично по 90 минути</li>
+                                    <li>Формат: присъствено, като извънкласна дейност в училището на децата</li>
+                                    <li>Групи: 8–10 деца, за да осигурим лично внимание</li>
+                                </ul>
+                            </div>
+                            <div class="skills-column">
+                                <h4>Цена и плащане</h4>
+                                <ul>
+                                    <li>Цена за цял курс (30 седмици): 842 лв.</li>
+                                    <li>Цена за модул (15 седмици): 421 лв.</li>
+                                    <li>Възможност за плащане наведнъж или на месечни вноски</li>
+                                    <li>Отстъпки: 5–10% за братя/сестри и за деца, които се записват за първа година</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prerequisites Section -->
+                    <div class="content-section fade-in">
+                        <h2>Наваксващи уроци</h2>
+                        <p>Включени са 3 наваксващи индивидуални сесии, които могат да се използват при пропуснато занятие или нужда от допълнителна подкрепа.</p>
+                    </div>
+
+                    <!-- Platform Section -->
+                    <div class="content-section fade-in">
+                        <h2>Преподаватели</h2>
+                        <p>Курсът се води от опитни преподаватели с реален опит в IT сферата, които знаят как да вдъхновят и мотивират децата.</p>
+                    </div>
+                </div>
+
+                <!-- Sticky Sidebar -->
+                <div class="sidebar fade-in no-bg">
+                    <div class="course-card">
+                        <div class="card-header">
+                            <div class="course-icon">
+                                <img src="https://logikids.bg/files/logikidsbg-babypython.png" alt="Course Icon">
+                            </div>
+                            <div class="course-title">
+                                <h2>Python Първи Стъпки</h2>
+                            </div>
+                        </div>
+                        <div class="course-info">
+                            <p>Деца 5–6 клас / 10–11 г.</p>
+                        </div>
+                        <div class="course-benefits">
+                            <div class="benefit-item">
+                                <div class="checkmark">✓</div>
+                                <span>Запознаване с езика Python</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="checkmark">✓</div>
+                                <span>Основни програмни конструкции (променливи, цикли, условия)</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="checkmark">✓</div>
+                                <span>Решаване на задачи чрез код</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="checkmark">✓</div>
+                                <span>Първи малки проекти с Python</span>
+                            </div>
+                        </div>
+                        <div class="cta-button-a">
+                            <button class="btn" onclick="window.location.href='/register'">
+                                Запишете се
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="fade-in">
+                    <h2>Готови за първите стъпки в дигиталния свят?</h2>
+                    <a href="/register-demo-lesson" class="cta-button">Регистрирайте се за безплатен демо урок</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+        <!-- Footer Container -->
+        <div id="footer-container"></div>
+
+    <script>
+        // Function to load external HTML content
+        async function loadComponent(url, containerId) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                const container = document.getElementById(containerId);
+                container.innerHTML = html;
+                container.classList.add('loaded');
+
+                // Execute any scripts in the loaded content
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.textContent = script.textContent;
+                    }
+                    document.head.appendChild(newScript);
+                });
+            } catch (error) {
+                console.error(`Error loading ${url}:`, error);
+            }
+        }
+
+        // Load navbar and footer
+        document.addEventListener('DOMContentLoaded', async () => {
+            await Promise.all([
+                loadComponent('navbar.html', 'navbar-container'),
+                loadComponent('footer.html', 'footer-container')
+            ]);
+
+            // Initialize animations after components are loaded
+            initializeAnimations();
+        });
+
+        function initializeAnimations() {
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animation classes
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add staggered animation delay to content sections
+            document.querySelectorAll('.content-section').forEach((section, index) => {
+                section.style.transitionDelay = `${index * 0.1}s`;
+            });
+        }
+
+        // Ripple effect for buttons
+        document.querySelectorAll('.course-page .btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255,255,255,0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                `;
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body>
+</html>
