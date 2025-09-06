@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Запишете се на демо урок - Logikids</title>
+
+	<meta name="description" content="Получете безплатен демо урок за курсовете на LogiKids – програмиране за деца 6–14 г. Попълни формата и се възползвай от безплатен демо урок.">
+	<meta name="keywords" content="демо урок програмиране, LogiKids, безплатен урок logikids, курс блоково програмиране">
+
+
+    <meta property="og:type" content="website">
+	<meta property="og:title" content="Запишете се на безплатен демо урок - Logikids">
+	<meta property="og:description" content="Забавни курсове по програмиране за деца.">
+	<meta property="og:url" content="https://logikids.bg/register-demo-lesson">
+	<meta property="og:image" content="https://logikids.bg/files/link-logo-image.png">
+
+  <link rel="icon" type="image/x-icon" href="https://logikids.bg/files/favicon.ico">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-top: 30px;
+        }
+
+        .diagonal-split {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            clip-path: polygon(0 60%, 100% 45%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-section {
+            padding: 80px 20px 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .header-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 40px 60px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .form-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.12);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-section {
+            padding: 40px 0;
+            color: #333;
+            margin-top: 330px;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+            min-width: 160px;
+            flex-shrink: 0;
+            padding-top: 14px;
+        }
+
+        .form-label svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            color: #6b7280;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .form-input-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-input,
+        .form-select {
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+            width: 100%;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #4f46e5;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .field-description {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .success-message {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 16px;
+            color: #065f46;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 16px;
+            color: #991b1b;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading .submit-btn {
+            background: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .diagonal-split {
+                clip-path: polygon(0 65%, 100% 50%, 100% 100%, 0% 100%);
+            }
+
+            .main-content {
+                gap: 60px;
+                padding: 40px 40px 80px;
+            }
+
+            .header-section h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .diagonal-split {
+                clip-path: polygon(0 50%, 100% 40%, 100% 100%, 0% 100%);
+            }
+
+            .header-section {
+                padding: 60px 20px 40px;
+            }
+
+            .header-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-section p {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 20px 20px 60px;
+            }
+            .main-container {
+                margin-top: 54px;
+            }
+
+            .form-section {
+                padding: 30px 20px;
+            }
+
+            .form-group {
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                min-width: auto;
+                padding-top: 0;
+                width: 100%;
+            }
+
+            .form-input-wrapper {
+                width: 100%;
+            }
+
+            .form-input,
+            .form-select {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .info-section {
+                padding: 20px;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .info-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+
+            .header-section p {
+                font-size: 1rem;
+            }
+
+            .form-section {
+                padding: 25px 15px;
+            }
+
+            .info-section h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Field validation styles */
+        .form-input.error,
+        .form-select.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+
+        .form-input.success,
+        .form-select.success {
+            border-color: #10b981;
+            background-color: #f0fdf4;
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-624SYFHC0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-624SYFHC0F');
+    </script>
+
+</head>
+<body>
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <div class="main-container">
+        <div class="diagonal-split"></div>
+
+        <div class="content-wrapper">
+            <div class="header-section">
+                <h1>Contact us!</h1>
+                <p>Our team is happy to answer your sales question. Fill the form below and we'll get to you as soon as possible.</p>
+            </div>
+
+            <div class="main-content">
+                <div class="form-section">
+                    <div class="success-message" id="successMessage">
+                        <strong>Успех!</strong> Вашето съобщение беше изпратено успешно. Ще се свържем с вас скоро!
+                    </div>
+
+                    <div class="error-message" id="errorMessage">
+                        <strong>Възникна грешка! Моля пишете ни на info@logikids.bg</strong> <span id="errorText"></span>
+                    </div>
+
+                    <form id="demoForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                Име <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="text" id="name" name="name" class="form-input" required placeholder="Вашето име">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                                Имейл <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="example@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                                Телефон <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+359 888 123 456">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="location">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                Локация <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <select id="location" name="location" class="form-select" required>
+                                    <option value="">Зареждане на локации...</option>
+                                </select>
+                                <div class="field-description">Провежда се в училището на децата</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="date">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                </svg>
+                                Дата <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <select id="date" name="date" class="form-select" required>
+                                    <option value="">Зареждане на дати...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="source">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                От къде научихте<br>за нас?
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="text" id="source" name="source" class="form-input" placeholder="Facebook, Google, препоръка от приятел...">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; display: inline;">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                            Изпрати съобщението
+                        </button>
+
+                        <div class="footer-text">
+                            <p>Всички полета маркирани със * са задължителни. Вашите данни ще бъдат обработени конфиденциално.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="info-section">
+                    <h2>This is other text</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script>
+        // API Configuration
+        const token = "pat8qkspsBs1BQOmC.c2ba30fc68800608da846559c4e42f1210a66d65c668d524726dfd6423c10a82";
+        const baseId = "appaof4yeNSsGULOx";
+        const tableLocations = "tblKk8c0qhZkClqnK";
+        const tableDates = "tblVetzN0NxB1sr0A";
+        const tableRegistrations = "tblNVjoxC3nD6Cqo3";
+        const successUrl = "https://logikids.bg/thanks";
+
+        // DOM Elements
+        const form = document.getElementById('demoForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const locationSelect = document.getElementById('location');
+        const dateSelect = document.getElementById('date');
+
+        // Form validation and enhanced UX
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearValidation);
+        });
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+
+            // Remove existing error styling
+            field.classList.remove('error', 'success');
+
+            if (field.hasAttribute('required') && !value) {
+                showFieldError(field, 'Това поле е задължително');
+                return false;
+            }
+
+            if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    showFieldError(field, 'Моля въведете валиден email адрес');
+                    return false;
+                }
+            }
+
+            if (field.type === 'tel' && value) {
+                const phoneRegex = /^[\+]?[\d\s\-\(\)]{8,}$/;
+                if (!phoneRegex.test(value)) {
+                    showFieldError(field, 'Моля въведете валиден телефонен номер');
+                    return false;
+                }
+            }
+
+            showFieldSuccess(field);
+            return true;
+        }
+
+        function showFieldError(field, message) {
+            field.classList.add('error');
+            field.title = message;
+        }
+
+        function showFieldSuccess(field) {
+            field.classList.add('success');
+            field.title = '';
+        }
+
+        function clearValidation(e) {
+            const field = e.target;
+            field.classList.remove('error', 'success');
+            field.title = '';
+        }
+
+        // Load options from Airtable
+        async function loadOptions() {
+            try {
+                // Load locations
+                const locationsRes = await fetch(
+                    `https://api.airtable.com/v0/${baseId}/${tableLocations}?filterByFormula={Status}`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+
+                if (!locationsRes.ok) {
+                    throw new Error(`Failed to fetch locations: ${locationsRes.status}`);
+                }
+
+                const locations = (await locationsRes.json()).records;
+                locationSelect.innerHTML = "<option value=''>-- Изберете локация --</option>";
+
+                locations.forEach(l => {
+                    const option = document.createElement("option");
+                    option.value = l.fields.Location;
+                    option.textContent = l.fields.Location;
+                    locationSelect.appendChild(option);
+                });
+
+                // Load dates
+                const datesRes = await fetch(
+                    `https://api.airtable.com/v0/${baseId}/${tableDates}?filterByFormula={Status}`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+
+                if (!datesRes.ok) {
+                    throw new Error(`Failed to fetch dates: ${datesRes.status}`);
+                }
+
+                const dates = (await datesRes.json()).records;
+                dateSelect.innerHTML = "<option value=''>-- Изберете дата --</option>";
+
+                dates.forEach(d => {
+                    const option = document.createElement("option");
+                    option.value = d.fields.Dates;
+                    option.textContent = d.fields.Dates;
+                    dateSelect.appendChild(option);
+                });
+            } catch (err) {
+                console.error("Грешка при зареждане:", err);
+                errorText.textContent = "Грешка при зареждане на опции. Моля, опреснете страницата.";
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Form submission handling
+        async function submitForm(event) {
+            event.preventDefault();
+
+            // Hide any previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            // Validate all required fields
+            let isValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+
+            requiredFields.forEach(field => {
+                if (!validateField({ target: field })) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                // Scroll to first error
+                const firstError = form.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstError.focus();
+                }
+                return;
+            }
+
+            // Show loading state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Изпращане...</span>';
+            submitBtn.disabled = true;
+            form.classList.add('loading');
+
+            try {
+                // Get form values
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const phone = document.getElementById("phone").value.trim();
+                const source = document.getElementById("source").value.trim();
+                const dateText = dateSelect.options[dateSelect.selectedIndex].value;
+                const locationText = locationSelect.options[locationSelect.selectedIndex].value;
+
+                // Submit to Airtable
+                const res = await fetch(
+                    `https://api.airtable.com/v0/${baseId}/${tableRegistrations}`,
+                    {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            "records": [
+                                {
+                                    "fields": {
+                                        "fldjKzv9PMAx2X5bi": name,
+                                        "fldWZMOf3XkAcrgDn": email,
+                                        "fld5JV4R6EknjptJc": phone,
+                                        "fldCeX589u4FGoQ8B": locationText,
+                                        "fldbBHWJX8b42Zftq": dateText,
+                                        "fldPffwzmxEGLDutA": source || ""
+                                    }
+                                }
+                            ]
+                        })
+                    }
+                );
+
+                if (res.ok) {
+                    // Show success message
+                    successMessage.style.display = 'block';
+
+                    // Redirect after a short delay
+                    setTimeout(() => {
+                        window.location.href = successUrl;
+                    }, 2000);
+                } else {
+                    const errData = await res.json();
+                    throw new Error(errData.error?.message || `HTTP error: ${res.status}`);
+                }
+            } catch (err) {
+                console.error("Submission error:", err);
+                errorText.textContent = "Възникна грешка при изпращане на формата. Моля, опитайте отново.";
+                errorMessage.style.display = 'block';
+
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } finally {
+                // Restore button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                form.classList.remove('loading');
+            }
+        }
+
+        // Add input focus animations
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+
+            input.addEventListener('blur', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            form.addEventListener('submit', submitForm);
+            loadOptions();
+        });
+    </script>
+
+<script>
+    // Function to load external HTML content
+    async function loadComponent(url, containerId) {
+      try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        container.innerHTML = html;
+        container.classList.add('loaded');
+
+        // Execute any scripts in the loaded content
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.src) {
+            newScript.src = script.src;
+          } else {
+            newScript.textContent = script.textContent;
+          }
+          document.head.appendChild(newScript);
+        });
+      } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+      }
+    }
+
+    // Load navbar and footer
+    document.addEventListener('DOMContentLoaded', async () => {
+      await Promise.all([
+        loadComponent('navbar.html', 'navbar-container'),
+        loadComponent('footer.html', 'footer-container')
+      ]);
+    });
+</script>
+</body>
+</html>
