@@ -731,7 +731,7 @@
 .popup-image {
     width: 100%;
     height: 200px;
-    background: url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;
+    background: url('https://logikids.bg/files/%D0%BF%D0%BE%D0%BF%D1%83%D0%BF-%D0%B8%D0%BC%D0%B3.jpeg') center/cover;
     border-radius: 20px 20px 0 0;
     position: relative;
 }
@@ -771,10 +771,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 25px;
-    color: #fbbf24;
+    color: #ffffff;
 }
 
 .popup-phone svg {
@@ -783,24 +783,31 @@
     margin-right: 10px;
 }
 
-.popup-button {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-    color: #1f2937;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
-}
+        .popup-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .popup-button svg {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
 
 .popup-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+    background: rgba(255, 255, 255, 0.3);
+
 }
 
 .popup-button:active {
@@ -829,8 +836,7 @@
     .popup-image {
         height: 150px;
     }
-}
-	
+}	
 		
     </style>
 
@@ -1114,18 +1120,23 @@
 	        <div class="popup-image"></div>
 	        <div class="popup-content">
 	            <h2 class="popup-title">Стартираме безплатни демо уроци!</h2>
-	            <p class="popup-subtitle">Започваме от октомври! Дайте шанс на детето си колко забавен и вдъхновяващ може да бъде светът на технологиите. Местата са ограничени, запазете своето място днес!</p>
+	            <p class="popup-subtitle">Започваме от октомври! Дайте шанс на детето си да открие колко забавен и вдъхновяващ може да бъде светът на технологиите. Местата са ограничени, запазете своето място днес!</p>
 	            <div class="popup-phone">
-	                <svg viewBox="0 0 24 24" fill="currentColor">
+	                <svg viewBox="0 0 24 24" fill="#ffffff">
 	                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
 	                </svg>
 	                +359879185018
 	            </div>
-	            <a href="tel:+359879185018" class="popup-button">Запиши се за демо урок</a>
+	            <a href="tel:+359879185018" class="popup-button"> <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>Запиши се за демо урок</a>
 	        </div>
 	    </div>
 	</div>
-
+	
     <script>
         // Function to load external HTML content
         async function loadComponent(url, containerId) {
@@ -1242,6 +1253,7 @@
 </body>
 
 </html>
+
 
 
 
