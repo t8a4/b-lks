@@ -837,7 +837,158 @@
         height: 150px;
     }
 }	
-		
+
+	/* Second Popup Styles (Landscape) */
+.second-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    z-index: 1002;
+    display: none;
+    overflow: hidden;
+}
+
+.second-popup.show {
+    display: block;
+    animation: scaleIn 0.4s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.second-popup-header {
+    background: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.second-popup-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    padding-right: 40px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.second-popup-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #888;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.second-popup-close:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.second-popup-image {
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.second-popup-image:hover {
+    transform: scale(1.02);
+}
+
+        .second-popup-footer {
+            background: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-top: 1px solid #eaeaea;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .second-popup-footer a {
+            color: #4f46e5;
+            text-decoration: none;
+            margin: 0 8px;
+            transition: color 0.2s ease;
+        }
+
+        .second-popup-footer a:hover {
+            color: #7c3aed;
+            text-decoration: underline;
+        }
+        .second-popup-modal {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease-out;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive */
+        @media (max-width: 768px) {
+            .popup-modal {
+                max-width: 95%;
+                margin: 20px;
+            }
+
+            .popup-content {
+                padding: 25px 20px;
+            }
+
+            .popup-title {
+                font-size: 1.5rem;
+            }
+
+            .popup-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .popup-image {
+                height: 150px;
+            }
+
+            .second-popup {
+                width: 95%;
+            }
+
+            .second-popup-title {
+                font-size: 1.2rem;
+                padding-right: 20px;
+            }
+
+            .second-popup-footer {
+                padding: 12px 15px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 
 	<!-- Google tag (gtag.js) -->
@@ -1136,6 +1287,23 @@
 	        </div>
 	    </div>
 	</div>
+
+	<!-- Second Popup (Landscape) -->
+    <div class="second-popup" id="secondPopup">
+        <div class="second-popup-header">
+            <h2 class="second-popup-title">Елате на откриването на НЧ "Надка Караджова", където ще водим курсове по програмиране!</h2>
+            <button class="second-popup-close" id="secondPopupClose">&times;</button>
+        </div>
+        <a href="https://nadkakaradjova.com" target="_blank">
+            <img src="https://logikids.bg/files/nchnadkakaradjova-first-event.jpg"
+                 alt="НЧ Надка Караджова" class="second-popup-image">
+        </a>
+        <div class="second-popup-footer">
+            Виж събитието на:
+            <a href="https://www.facebook.com/events/1996183137800832/?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22external%22%7D%2C%7B%22mechanism%22%3A%22attachment%22%2C%22surface%22%3A%22newsfeed%22%7D]%2C%22ref_notif_type%22%3Anull%7D" target="_blank">Facebook</a> |
+            <a href="https://NadkaKaradjova.com" target="_blank">NadkaKaradjova.com</a>
+        </div>
+    </div>
 	
     <script>
         // Function to load external HTML content
@@ -1222,37 +1390,74 @@
 
 
 
-		// Popup functionality
-		const popupOverlay = document.getElementById('popupOverlay');
-		const popupClose = document.getElementById('popupClose');
-		
-		// Show popup after 3 seconds
-		setTimeout(() => {
-		    popupOverlay.classList.add('show');
-		}, 3000);
-		
-		// Close popup when clicking close button
-		popupClose.addEventListener('click', () => {
-		    popupOverlay.classList.remove('show');
-		});
-		
-		// Close popup when clicking outside the modal
-		popupOverlay.addEventListener('click', (e) => {
-		    if (e.target === popupOverlay) {
-		        popupOverlay.classList.remove('show');
-		    }
-		});
-		
-		// Close popup with Escape key
-		document.addEventListener('keydown', (e) => {
-		    if (e.key === 'Escape' && popupOverlay.classList.contains('show')) {
-		        popupOverlay.classList.remove('show');
-		    }
-		});
+		// Popups functionality
+		// First popup functionality
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose = document.getElementById('popupClose');
+
+// Second popup functionality
+const secondPopup = document.getElementById('secondPopup');
+const secondPopupClose = document.getElementById('secondPopupClose');
+
+// Show both popups function
+function showBothPopups() {
+    // Show first popup
+    popupOverlay.classList.add('show');
+
+    // Show second popup after a short delay
+    setTimeout(() => {
+        secondPopup.classList.add('show');
+    }, 500);
+}
+
+// Show popups automatically after 3 seconds
+setTimeout(showBothPopups, 3000);
+
+// Close first popup when clicking close button
+popupClose.addEventListener('click', () => {
+    popupOverlay.classList.remove('show');
+});
+
+// Close first popup when clicking outside the modal
+popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) {
+        popupOverlay.classList.remove('show');
+    }
+});
+
+// Close second popup when clicking close button
+secondPopupClose.addEventListener('click', () => {
+    secondPopup.classList.remove('show');
+});
+
+// Close both popups with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (popupOverlay.classList.contains('show')) {
+            popupOverlay.classList.remove('show');
+        }
+        if (secondPopup.classList.contains('show')) {
+            secondPopup.classList.remove('show');
+        }
+    }
+});
+document.addEventListener('click', function (e) {
+  const secondPopup = document.querySelector('.second-popup');
+  if (secondPopup && secondPopup.classList.contains('show')) {
+    if (!secondPopup.contains(e.target)) {
+      // Close the second popup
+      secondPopup.classList.remove('show');
+
+      // Stop this click from reaching the first popup's close listener
+      e.stopPropagation();
+    }
+  }
+}, true); // useCapture=true so it runs before other listeners
     </script>
 </body>
 
 </html>
+
 
 
 
