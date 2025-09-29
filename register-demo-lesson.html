@@ -431,6 +431,17 @@
                                 <input type="text" id="name" name="name" class="form-input" required placeholder="Вашето име">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="form-label" for="kidName">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                Име на детето <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="text" id="kidName" name="kidName" class="form-input" required placeholder="Име на вашето дете">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="form-label" for="email">
@@ -467,7 +478,6 @@
                                 <select id="location" name="location" class="form-select" required>
                                     <option value="">Зареждане на локации...</option>
                                 </select>
-                                <div class="field-description">Провежда се в училището на децата</div>
                             </div>
                         </div>
 
@@ -480,8 +490,10 @@
                             </label>
                             <div class="form-input-wrapper">
                                 <select id="date" name="date" class="form-select" required>
-                                    <option value="">Зареждане на дати...</option>
+                                    <option value="">Моля изберете локация</option>
                                 </select>
+                                <div class="field-description">Ще се свържем с вас за потвърждение.</div>
+
                             </div>
                         </div>
 
@@ -595,53 +607,118 @@
         }
 
         // Load options from Airtable
-        async function loadOptions() {
-            try {
-                // Load locations
-                const locationsRes = await fetch(
-                    `https://api.airtable.com/v0/${baseId}/${tableLocations}?filterByFormula={Status}`,
-                    { headers: { Authorization: `Bearer ${token}` } }
-                );
+        // Кеш за локации и дати
+let cachedLocations = null;
+const cachedDates = {}; // { "Име на локация": [дати...] }
 
-                if (!locationsRes.ok) {
-                    throw new Error(`Failed to fetch locations: ${locationsRes.status}`);
-                }
-
-                const locations = (await locationsRes.json()).records;
-                locationSelect.innerHTML = "<option value=''>-- Изберете локация --</option>";
-
-                locations.forEach(l => {
-                    const option = document.createElement("option");
-                    option.value = l.fields.Location;
-                    option.textContent = l.fields.Location;
-                    locationSelect.appendChild(option);
-                });
-
-                // Load dates
-                const datesRes = await fetch(
-                    `https://api.airtable.com/v0/${baseId}/${tableDates}?filterByFormula={Status}`,
-                    { headers: { Authorization: `Bearer ${token}` } }
-                );
-
-                if (!datesRes.ok) {
-                    throw new Error(`Failed to fetch dates: ${datesRes.status}`);
-                }
-
-                const dates = (await datesRes.json()).records;
-                dateSelect.innerHTML = "<option value=''>-- Изберете дата --</option>";
-
-                dates.forEach(d => {
-                    const option = document.createElement("option");
-                    option.value = d.fields.Dates;
-                    option.textContent = d.fields.Dates;
-                    dateSelect.appendChild(option);
-                });
-            } catch (err) {
-                console.error("Грешка при зареждане:", err);
-                errorText.textContent = "Грешка при зареждане на опции. Моля, опреснете страницата.";
-                errorMessage.style.display = 'block';
-            }
+// Зареждане на локациите (само веднъж)
+async function loadOptions() {
+    try {
+        if (cachedLocations) {
+            renderLocations(cachedLocations);
+            return;
         }
+
+        const locationsRes = await fetch(
+            `https://api.airtable.com/v0/${baseId}/${tableLocations}?filterByFormula={Status}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        if (!locationsRes.ok) {
+            throw new Error(`Failed to fetch locations: ${locationsRes.status}`);
+        }
+
+        cachedLocations = (await locationsRes.json()).records;
+        renderLocations(cachedLocations);
+
+    } catch (err) {
+        console.error("Грешка при зареждане на локации:", err);
+        errorText.textContent = "Грешка при зареждане на локации.";
+        errorMessage.style.display = 'block';
+    }
+}
+
+// Рендериране на локациите в падащото меню
+function renderLocations(locations) {
+    locationSelect.innerHTML = "<option value=''>-- Изберете локация --</option>";
+
+    locations.forEach(l => {
+        const option = document.createElement("option");
+        option.value = l.fields.Location;
+        option.textContent = l.fields.Location;
+        locationSelect.appendChild(option);
+    });
+
+    // Слушаме за промяна на локация → зареждаме дати
+    locationSelect.addEventListener("change", (e) => {
+        loadDatesForLocation(e.target.value);
+    });
+}
+
+// Зареждане на дати за конкретна локация (с кеш)
+async function loadDatesForLocation(location) {
+    if (!location) {
+        dateSelect.innerHTML = "<option value=''>Моля изберете локация</option>";
+        return;
+    }
+
+    // Ако вече сме зареждали датите за тази локация → използваме кеш
+    if (cachedDates[location]) {
+        renderDates(cachedDates[location]);
+        return;
+    }
+
+    // Докато чакаме API → показваме "Зареждане на дати..."
+    dateSelect.innerHTML = "<option value=''>Зареждане на дати...</option>";
+
+    try {
+        let tableId;
+        if (location === 'Logikids София НЧ "Надка Караджова 2012"') {
+            tableId = "tblVetzN0NxB1sr0A";
+        } else if (location === "Logikids 78 СУ, Банкя") {
+            tableId = "tblvtEiREL82ZhBXA";
+        } else {
+            dateSelect.innerHTML = "<option value=''>Няма налични дати</option>";
+            return;
+        }
+
+        const res = await fetch(
+            `https://api.airtable.com/v0/${baseId}/${tableId}?filterByFormula={Status}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        if (!res.ok) throw new Error(`Failed to fetch dates: ${res.status}`);
+        const records = (await res.json()).records;
+
+        // Кешираме за следващи селекции
+        cachedDates[location] = records;
+
+        renderDates(records);
+    } catch (err) {
+        console.error("Грешка при зареждане на дати:", err);
+        dateSelect.innerHTML =
+            "<option value=''>Грешка при зареждане на дати</option>";
+    }
+}
+
+// Рендериране на дати в падащото меню
+function renderDates(records) {
+    if (!records || records.length === 0) {
+        dateSelect.innerHTML =
+            "<option value=''>В момента няма свободни места за демо урок, моля свържете се с нас по телефон</option>";
+        return;
+    }
+
+    dateSelect.innerHTML = "<option value=''>-- Изберете дата --</option>";
+    records.forEach(r => {
+        const option = document.createElement("option");
+        option.value = r.fields.Dates;
+        option.textContent = r.fields.Dates;
+        dateSelect.appendChild(option);
+    });
+}
+
+
 
         // Form submission handling
         async function submitForm(event) {
@@ -680,6 +757,7 @@
             try {
                 // Get form values
                 const name = document.getElementById("name").value.trim();
+                const kidName = document.getElementById("kidName").value.trim();
                 const email = document.getElementById("email").value.trim();
                 const phone = document.getElementById("phone").value.trim();
                 const source = document.getElementById("source").value.trim();
@@ -700,6 +778,7 @@
                                 {
                                     "fields": {
                                         "fldjKzv9PMAx2X5bi": name,
+                                        "fld4QC9YNEnVrzU1P": kidName,
                                         "fldWZMOf3XkAcrgDn": email,
                                         "fld5JV4R6EknjptJc": phone,
                                         "fldCeX589u4FGoQ8B": locationText,
@@ -758,6 +837,8 @@
         });
     </script>
 
+
+
 <script>
     // Function to load external HTML content
     async function loadComponent(url, containerId) {
@@ -791,6 +872,8 @@
         loadComponent('footer.html', 'footer-container')
       ]);
     });
+}
+
 </script>
 </body>
 </html>
