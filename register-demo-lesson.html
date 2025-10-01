@@ -275,6 +275,338 @@
             display: none;
         }
 
+        /* Date Picker Modal Styles */
+        .date-picker-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            padding-bottom: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .date-group {
+            margin-bottom: 24px;
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+
+        .date-group:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .date-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .date-day {
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .time-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .time-slot {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .time-slot:hover {
+            border-color: #4f46e5;
+            background: #f5f3ff;
+            transform: translateX(4px);
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-color: #4f46e5;
+            color: white;
+            font-weight: 600;
+        }
+
+        .time-slot-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .time-slot.selected .time-slot-icon {
+            opacity: 1;
+        }
+
+        .other-option-section {
+            margin-top: 24px;
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+
+        .other-option-section:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .other-option-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .no-time-button {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .no-time-button:hover {
+            border-color: #4f46e5;
+            background: #f5f3ff;
+            transform: translateX(4px);
+        }
+
+        .no-time-button.selected {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-color: #4f46e5;
+            color: white;
+            font-weight: 600;
+        }
+
+        .no-time-button-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .no-time-button.selected .no-time-button-icon {
+            opacity: 1;
+        }
+
+        .no-time-subtitle {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .modal-body-scroll {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 8px;
+            margin-right: -8px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 0;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            flex-shrink: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+        }
+
+        .modal-actions.show {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 24px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn-cancel {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .modal-btn-cancel:hover {
+            background: #e5e7eb;
+        }
+
+        .modal-btn-confirm {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .modal-btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .modal-btn-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .date-display-input {
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #f9fafb;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .date-display-input:hover {
+            border-color: #4f46e5;
+            background: white;
+        }
+
+        .date-display-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        .date-display-input.has-value {
+            background: white;
+            border-color: #10b981;
+            color: #065f46;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 24px;
+                max-height: 90vh;
+            }
+
+            .modal-title {
+                font-size: 1.25rem;
+            }
+
+            .date-header {
+                font-size: 1rem;
+            }
+
+            .time-slot {
+                padding: 12px 14px;
+            }
+        }
+
         /* Loading Animation */
         .loading {
             opacity: 0.7;
@@ -482,18 +814,25 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="date">
+                            <label class="form-label" for="dateDisplay">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
                                 </svg>
                                 Дата <span class="required">*</span>
                             </label>
                             <div class="form-input-wrapper">
-                                <select id="date" name="date" class="form-select" required>
-                                    <option value="">Моля изберете локация</option>
-                                </select>
+                                <input
+                                    type="text"
+                                    id="dateDisplay"
+                                    name="dateDisplay"
+                                    class="date-display-input"
+                                    readonly
+                                    required
+                                    placeholder="Моля изберете локация първо"
+                                    onclick="openDateModal()"
+                                />
+                                <input type="hidden" id="date" name="date" />
                                 <div class="field-description">Ще се свържем с вас за потвърждение.</div>
-
                             </div>
                         </div>
 
@@ -530,6 +869,25 @@
         </div>
     </div>
 
+    <!-- Date Picker Modal -->
+    <div class="date-picker-modal" id="datePickerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Изберете дата и час</h2>
+                <button class="modal-close" onclick="closeDateModal()">&times;</button>
+            </div>
+            <div class="modal-body-scroll">
+                <div id="dateModalBody">
+                    <p style="text-align: center; color: #6b7280;">Моля изберете локация първо</p>
+                </div>
+            </div>
+            <div class="modal-actions" id="modalActions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeDateModal()">Отказ</button>
+                <button class="modal-btn modal-btn-confirm" id="confirmDateBtn" onclick="confirmDateSelection()" disabled>Потвърди</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
@@ -549,7 +907,15 @@
         const errorMessage = document.getElementById('errorMessage');
         const errorText = document.getElementById('errorText');
         const locationSelect = document.getElementById('location');
-        const dateSelect = document.getElementById('date');
+        const dateDisplay = document.getElementById('dateDisplay');
+        const dateHidden = document.getElementById('date');
+        const dateModal = document.getElementById('datePickerModal');
+        const dateModalBody = document.getElementById('dateModalBody');
+        const modalActions = document.getElementById('modalActions');
+        const confirmDateBtn = document.getElementById('confirmDateBtn');
+
+        let selectedDateValue = null;
+        let availableDates = [];
 
         // Form validation and enhanced UX
         const inputs = document.querySelectorAll('input, select');
@@ -658,18 +1024,23 @@ function renderLocations(locations) {
 // Зареждане на дати за конкретна локация (с кеш)
 async function loadDatesForLocation(location) {
     if (!location) {
-        dateSelect.innerHTML = "<option value=''>Моля изберете локация</option>";
+        dateDisplay.placeholder = "Моля изберете локация първо";
+        dateDisplay.value = "";
+        dateHidden.value = "";
+        selectedDateValue = null;
+        availableDates = [];
         return;
     }
 
     // Ако вече сме зареждали датите за тази локация → използваме кеш
     if (cachedDates[location]) {
-        renderDates(cachedDates[location]);
+        availableDates = cachedDates[location];
+        dateDisplay.placeholder = "Кликнете за да изберете дата и час";
         return;
     }
 
-    // Докато чакаме API → показваме "Зареждане на дати..."
-    dateSelect.innerHTML = "<option value=''>Зареждане на дати...</option>";
+    // Докато чакаме API
+    dateDisplay.placeholder = "Зареждане на дати...";
 
     try {
         let tableId;
@@ -678,7 +1049,8 @@ async function loadDatesForLocation(location) {
         } else if (location === "Logikids 78 СУ, Банкя") {
             tableId = "tblvtEiREL82ZhBXA";
         } else {
-            dateSelect.innerHTML = "<option value=''>Няма налични дати</option>";
+            dateDisplay.placeholder = "Няма налични дати";
+            availableDates = [];
             return;
         }
 
@@ -692,31 +1064,194 @@ async function loadDatesForLocation(location) {
 
         // Кешираме за следващи селекции
         cachedDates[location] = records;
+        availableDates = records;
 
-        renderDates(records);
+        if (records.length === 0) {
+            dateDisplay.placeholder = "В момента няма свободни места";
+        } else {
+            dateDisplay.placeholder = "Кликнете за да изберете дата и час";
+        }
     } catch (err) {
         console.error("Грешка при зареждане на дати:", err);
-        dateSelect.innerHTML =
-            "<option value=''>Грешка при зареждане на дати</option>";
+        dateDisplay.placeholder = "Грешка при зареждане на дати";
+        availableDates = [];
     }
 }
 
-// Рендериране на дати в падащото меню
-function renderDates(records) {
-    if (!records || records.length === 0) {
-        dateSelect.innerHTML =
-            "<option value=''>В момента няма свободни места за демо урок, моля свържете се с нас по телефон</option>";
+// Parse date string "13.10.25, Понеделник, 15:00-16:00ч. (1-2 клас)"
+function parseDateString(dateStr) {
+    const parts = dateStr.split(', ');
+    if (parts.length < 3) return null;
+
+    const datePart = parts[0].trim(); // "13.10.25"
+    const dayPart = parts[1].trim();  // "Понеделник"
+    const timePart = parts[2].trim(); // "15:00-16:00ч. (1-2 клас)"
+
+    return {
+        date: datePart,
+        day: dayPart,
+        time: timePart,
+        full: dateStr
+    };
+}
+
+// Group dates by date
+function groupDatesByDate(records) {
+    const grouped = {};
+
+    records.forEach(record => {
+        const dateStr = record.fields.Dates;
+        const parsed = parseDateString(dateStr);
+
+        if (parsed) {
+            const key = parsed.date;
+            if (!grouped[key]) {
+                grouped[key] = {
+                    date: parsed.date,
+                    day: parsed.day,
+                    times: []
+                };
+            }
+            grouped[key].times.push({
+                time: parsed.time,
+                full: parsed.full
+            });
+        }
+    });
+
+    // Sort dates
+    const sortedKeys = Object.keys(grouped).sort((a, b) => {
+        const [dayA, monthA, yearA] = a.split('.').map(Number);
+        const [dayB, monthB, yearB] = b.split('.').map(Number);
+        const dateA = new Date(2000 + yearA, monthA - 1, dayA);
+        const dateB = new Date(2000 + yearB, monthB - 1, dayB);
+        return dateA - dateB;
+    });
+
+    return sortedKeys.map(key => grouped[key]);
+}
+
+// Modal functions
+function openDateModal() {
+    if (!availableDates || availableDates.length === 0) {
+        if (!locationSelect.value) {
+            alert('Моля изберете локация първо');
+        } else {
+            alert('Няма налични дати за избраната локация');
+        }
         return;
     }
 
-    dateSelect.innerHTML = "<option value=''>-- Изберете дата --</option>";
-    records.forEach(r => {
-        const option = document.createElement("option");
-        option.value = r.fields.Dates;
-        option.textContent = r.fields.Dates;
-        dateSelect.appendChild(option);
-    });
+    renderModalContent();
+    dateModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
+
+function closeDateModal() {
+    dateModal.style.display = 'none';
+    document.body.style.overflow = '';
+    modalActions.classList.remove('show');
+}
+
+function renderModalContent() {
+    const groupedDates = groupDatesByDate(availableDates);
+
+    let html = '';
+
+    groupedDates.forEach(group => {
+        html += `
+            <div class="date-group">
+                <div class="date-header">${group.date}</div>
+                <div class="date-day">${group.day}</div>
+                <div class="time-slots">
+        `;
+
+        group.times.forEach(timeSlot => {
+            html += `
+                <div class="time-slot" onclick="selectTimeSlot(this, '${timeSlot.full}')">
+                    <span>${timeSlot.time}</span>
+                    <svg class="time-slot-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                </div>
+            `;
+        });
+
+        html += `
+                </div>
+            </div>
+        `;
+    });
+
+    // Add "other option" section
+    html += `
+        <div class="other-option-section">
+            <div class="other-option-header">Друга опция</div>
+            <div class="no-time-button" onclick="selectNoTime(this)">
+                <span>Няма удобно време за мен</span>
+                <svg class="no-time-button-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            </div>
+            <div class="no-time-subtitle">*Бих искал да се свържете с мен по телефон за да уточним удобен час ако е възможно</div>
+        </div>
+    `;
+
+    dateModalBody.innerHTML = html;
+    modalActions.classList.remove('show');
+}
+
+function selectTimeSlot(element, fullDateStr) {
+    // Deselect all
+    document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.classList.remove('selected');
+    });
+    document.querySelectorAll('.no-time-button').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+
+    // Select this one
+    element.classList.add('selected');
+    selectedDateValue = fullDateStr;
+    confirmDateBtn.disabled = false;
+
+    // Show modal actions with slide animation
+    modalActions.classList.add('show');
+}
+
+function selectNoTime(element) {
+    // Deselect all
+    document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.classList.remove('selected');
+    });
+    document.querySelectorAll('.no-time-button').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+
+    // Select this one
+    element.classList.add('selected');
+    selectedDateValue = "Няма удобно време за мен";
+    confirmDateBtn.disabled = false;
+
+    // Show modal actions with slide animation
+    modalActions.classList.add('show');
+}
+
+function confirmDateSelection() {
+    if (selectedDateValue) {
+        dateHidden.value = selectedDateValue;
+        dateDisplay.value = selectedDateValue;
+        dateDisplay.classList.add('has-value');
+        closeDateModal();
+    }
+}
+
+// Close modal when clicking outside
+dateModal.addEventListener('click', function(e) {
+    if (e.target === dateModal) {
+        closeDateModal();
+    }
+});
 
 
 
@@ -761,7 +1296,7 @@ function renderDates(records) {
                 const email = document.getElementById("email").value.trim();
                 const phone = document.getElementById("phone").value.trim();
                 const source = document.getElementById("source").value.trim();
-                const dateText = dateSelect.options[dateSelect.selectedIndex].value;
+                const dateText = dateHidden.value;
                 const locationText = locationSelect.options[locationSelect.selectedIndex].value;
 
                 // Submit to Airtable
