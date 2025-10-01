@@ -1049,7 +1049,7 @@ async function loadDatesForLocation(location) {
         } else if (location === "Logikids 78 СУ, Банкя") {
             tableId = "tblvtEiREL82ZhBXA";
         } else {
-            dateDisplay.placeholder = "Няма налични дати";
+            dateDisplay.placeholder = "Няма налични/свободни дати";
             availableDates = [];
             return;
         }
@@ -1137,7 +1137,7 @@ function openDateModal() {
         if (!locationSelect.value) {
             alert('Моля изберете локация първо');
         } else {
-            alert('Няма налични дати за избраната локация(Или изчакайте да бъдат заредени от сайта, след което опитайте отново)');
+            alert('Няма свободни дати за избраната локация(Или изчакайте да бъдат заредени от сайта, след което опитайте отново)');
         }
         return;
     }
