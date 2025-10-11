@@ -15,10 +15,17 @@
 	<meta property="og:image" content="https://logikids.bg/files/link-image.png">
 
 	<link rel="canonical" href="https://logikids.bg" />
-
 	
 	<link rel="icon" type="image/x-icon" href="/files/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<script>
+    // Automatically remove a trailing dot in the URL path
+    if (window.location.pathname.endsWith('.')) {
+      window.location.replace(window.location.pathname.slice(0, -1));
+    }
+    </script>
+	
     <style>
         * {
             margin: 0;
@@ -1457,6 +1464,7 @@ document.addEventListener('click', function (e) {
 </body>
 
 </html>
+
 
 
 
