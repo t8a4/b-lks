@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Number Sequence Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .innerdiv {
+            background: #ACABAB;
+            border: 10px solid #767276;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .game-info {
+            display: flex;
+            background: #3F51B5;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+
+        .timer {
+            margin-right: 1rem;
+        }
+
+        .retry-button {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            fill: #8E9FCB;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .retry-button:hover {
+            transform: rotate(90deg);
+            fill: #ffffff;
+        }
+
+        .gamebox {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+            background: #0F3FB4;
+            border: 4px solid #656769;
+            border-radius: 0.4rem;
+            min-height: 300px;
+        }
+
+        .eachline {
+            display: flex;
+            justify-content: center;
+        }
+
+        .eachbox {
+            font-family: 'Kalam', cursive;
+            width: 5rem;
+            height: 5rem;
+            margin: 0.2rem;
+            color: #122253;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .eachbox p {
+            width: 100%;
+            height: 100%;
+            background: #8E9FCB;
+            border-radius: 0.5rem;
+            text-align: center;
+            padding: 0.5rem;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .correct {
+            background: #32cd32 !important;
+        }
+
+        .wrong {
+            background: #F44336 !important;
+        }
+
+        .task_comp {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 2rem;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .task_comp p {
+            display: none;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .eachline {
+                flex-direction: column;
+            }
+            .gamebox {
+                flex-direction: row;
+            }
+            .game-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .game-info {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="innerdiv">
+        <div class="game-header">
+            <div class="game-info">
+                <div class="timer">Time: 120s</div>
+                <div class="level">Level: 1</div>
+            </div>
+            <svg class="retry-button" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.9547098,7.98576084 L15.0711,7.99552 C15.6179,8.07328 15.9981,8.57957 15.9204,9.12636 C15.6826,10.7983 14.9218,12.3522 13.747,13.5654 C12.5721,14.7785 11.0435,15.5888 9.37999,15.8801 C7.7165,16.1714 6.00349,15.9288 4.48631,15.187 C3.77335,14.8385 3.12082,14.3881 2.5472,13.8537 L1.70711,14.6938 C1.07714,15.3238 3.55271368e-15,14.8776 3.55271368e-15,13.9867 L3.55271368e-15,9.99998 L3.98673,9.99998 C4.87763,9.99998 5.3238,11.0771 4.69383,11.7071 L3.9626,12.4383 C4.38006,12.8181 4.85153,13.1394 5.36475,13.3903 C6.50264,13.9466 7.78739,14.1285 9.03501,13.9101 C10.2826,13.6916 11.4291,13.0839 12.3102,12.174 C13.1914,11.2641 13.762,10.0988 13.9403,8.84476 C14.0181,8.29798 14.5244,7.91776 15.0711,7.99552 L14.9547098,7.98576084 Z M11.5137,0.812976 C12.2279,1.16215 12.8814,1.61349 13.4558,2.14905 L14.2929,1.31193 C14.9229,0.681961 16,1.12813 16,2.01904 L16,6.00001 L12.019,6.00001 C11.1281,6.00001 10.6819,4.92287 11.3119,4.29291 L12.0404,3.56441 C11.6222,3.18346 11.1497,2.86125 10.6353,2.60973 C9.49736,2.05342 8.21261,1.87146 6.96499,2.08994 C5.71737,2.30841 4.57089,2.91611 3.68976,3.82599 C2.80862,4.73586 2.23802,5.90125 2.05969,7.15524 C1.98193,7.70202 1.47564,8.08224 0.928858,8.00448 C0.382075,7.92672 0.00185585,7.42043 0.0796146,6.87364 C0.31739,5.20166 1.07818,3.64782 2.25303,2.43465 C3.42788,1.22148 4.95652,0.411217 6.62001,0.119916 C8.2835,-0.171384 9.99651,0.0712178 11.5137,0.812976 Z"/>
+            </svg>
+        </div>
+
+        <div class="gamebox">
+            <div class="task_comp">
+                <p>Task Completed!</p>
+            </div>
+            <div class="eachline">
+                <div class="eachbox">
+                    <p>7</p>
+                </div>
+                <div class="eachbox">
+                    <p>9</p>
+                </div>
+                <div class="eachbox">
+                    <p>3</p>
+                </div>
+                <div class="eachbox">
+                    <p>8</p>
+                </div>
+                <div class="eachbox">
+                    <p>1</p>
+                </div>
+            </div>
+            <div class="eachline">
+                <div class="eachbox">
+                    <p>4</p>
+                </div>
+                <div class="eachbox">
+                    <p>5</p>
+                </div>
+                <div class="eachbox">
+                    <p>2</p>
+                </div>
+                <div class="eachbox">
+                    <p>10</p>
+                </div>
+                <div class="eachbox">
+                    <p>6</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var gen_arr = [];
+        var should_press = 1;
+        var currentLevel = 1;
+        var maxNumber = 10;
+        var timeLeft = 120;
+        var timerInterval;
+        var gameActive = true;
+
+        // Initialize the game
+        function initGame() {
+            currentLevel = 1;
+            maxNumber = 10;
+            timeLeft = 120;
+            should_press = 1;
+            gameActive = true;
+            updateLevelDisplay();
+            updateTimerDisplay();
+            startTimer();
+            create_game();
+        }
+
+        // Start the countdown timer
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        // Update the timer display
+        function updateTimerDisplay() {
+            document.querySelector(".timer").textContent = "Time: " + timeLeft + "s";
+        }
+
+        // Update the level display
+        function updateLevelDisplay() {
+            document.querySelector(".level").textContent = "Level: " + currentLevel;
+        }
+
+        // End the game when time runs out
+        function endGame() {
+            gameActive = false;
+            clearInterval(timerInterval);
+            document.querySelector(".task_comp p").textContent = "Time's Up! Level: " + currentLevel;
+            document.querySelector(".task_comp p").style.display = "block";
+
+            // Disable all boxes
+            document.querySelectorAll(".eachbox p").forEach(box => {
+                box.onclick = null;
+            });
+        }
+
+        // Making random array
+        function create_game() {
+            gen_arr = [];
+            while(gen_arr.length != maxNumber) {
+                rand = Math.floor(Math.random() * maxNumber) + 1;
+                if(!gen_arr.includes(rand))
+                    gen_arr.push(rand);
+            }
+
+            // Clear existing boxes
+            document.querySelectorAll(".gamebox .eachline").forEach(line => line.remove());
+
+            // Create new boxes based on the current level
+            let numbersPerRow = 5;
+            let rowsNeeded = Math.ceil(maxNumber / numbersPerRow);
+
+            for (let i = 0; i < rowsNeeded; i++) {
+                let row = document.createElement("div");
+                row.className = "eachline";
+                let startIdx = i * numbersPerRow;
+                let endIdx = Math.min(startIdx + numbersPerRow, maxNumber);
+
+                for (let j = startIdx; j < endIdx; j++) {
+                    let box = document.createElement("div");
+                    box.className = "eachbox";
+                    box.innerHTML = `<p>${gen_arr[j]}</p>`;
+                    box.querySelector("p").onclick = function() {
+                        pressed(this, gen_arr[j]);
+                    };
+                    row.appendChild(box);
+                }
+                document.querySelector(".gamebox").prepend(row);
+            }
+        }
+
+        function pressed(obj, number) {
+            if (!gameActive) return;
+
+            if (number == should_press) {
+                should_press++;
+                obj.classList.add("correct");
+
+                if (should_press > maxNumber) {
+                    levelComplete();
+                }
+            } else {
+                gameover();
+            }
+        }
+
+        function levelComplete() {
+            document.querySelector(".task_comp p").textContent = "Level " + currentLevel + " Complete!";
+            document.querySelector(".task_comp p").style.display = "block";
+
+            setTimeout(function() {
+                nextLevel();
+            }, 1500);
+        }
+
+        function nextLevel() {
+            currentLevel++;
+            maxNumber++;
+            should_press = 1;
+            updateLevelDisplay();
+            document.querySelector(".task_comp p").style.display = "none";
+            document.querySelectorAll(".eachbox p").forEach(box => {
+                box.classList.remove("correct");
+                box.classList.remove("wrong");
+            });
+            create_game();
+        }
+
+        function gameover() {
+            function animate_gameover() {
+                document.querySelectorAll(".eachbox p").forEach(box => {
+                    box.classList.remove("correct");
+                    box.classList.add("wrong");
+                });
+
+                setTimeout(function() {
+                    document.querySelectorAll(".eachbox p").forEach(box => {
+                        box.classList.remove("correct");
+                        box.classList.remove("wrong");
+                    });
+                }, 300);
+            }
+
+            animate_gameover();
+            setTimeout(function() {
+                animate_gameover();
+            }, 500);
+            should_press = 1;
+        }
+
+        function restartGame() {
+            // Clear existing timer
+            clearInterval(timerInterval);
+
+            // Reset all game variables
+            currentLevel = 1;
+            maxNumber = 10;
+            timeLeft = 120;
+            should_press = 1;
+            gameActive = true;
+
+            // Update displays
+            updateLevelDisplay();
+            updateTimerDisplay();
+
+            // Hide any completion message
+            document.querySelector(".task_comp p").style.display = "none";
+
+            // Clear any existing wrong/correct classes
+            document.querySelectorAll(".eachbox p").forEach(box => {
+                box.classList.remove("correct");
+                box.classList.remove("wrong");
+            });
+
+            // Start new timer
+            startTimer();
+
+            // Create new game board
+            create_game();
+        }
+
+        // Initialize the game when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            initGame();
+
+            // Add click handler for retry button - now calls restartGame instead of restartLevel
+            document.querySelector(".retry-button").addEventListener("click", function() {
+                restartGame();
+            });
+        });
+    </script>
+</body>
+</html>
