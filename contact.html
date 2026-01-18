@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свържете се с нас - Logikids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #f59e0b;
+            --accent-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            background: #6d7bd8;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            animation: scaleIn 0.6s ease;
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px 25px;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            font-weight: 600;
+            animation: slideIn 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .form-group label svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .required {
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 16px;
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input::placeholder,
+        .form-group select::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: 40px;
+        }
+
+        .form-group select::-ms-expand {
+            display: none;
+        }
+
+        .submit-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .submit-btn {
+            padding: 16px 40px;
+            background: var(--gradient-1);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 70px;
+                min-height: 45vh;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-container {
+                padding: 30px 25px;
+                border-radius: 16px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .submit-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .form-container {
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Свържете се с нас</h1>
+                <p>Ние от Logikids сме тук, за да подкрепим всяко дете в пътешествието му към знания и умения за бъдещето. Ако имате въпроси относно нашите програми, искате да научите повече за подходящите занимания за вашето дете или просто искате да се запознаете с нашата философия – не се колебайте да се свържете с нас.
+
+</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    <strong>Успех!</strong> Вашето съобщение беше изпратено успешно. Ще се свържем с вас скоро!
+                </div>
+
+                <form action="https://formsubmit.co/register@logikids.me" method="POST" id="contactForm">
+                    <div class="form-grid">
+                        <!-- Име -->
+                        <div class="form-group">
+                            <label for="name">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                Име <span class="required">*</span>
+                            </label>
+                            <input type="text" id="name" name="Име" required placeholder="Име и фамилия">
+                        </div>
+
+                        <!-- Телефон -->
+                        <div class="form-group">
+                            <label for="phone">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                                Телефон <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="phone" name="Телефон" required placeholder="+359879185018">
+                        </div>
+
+                        <!-- Имейл -->
+                        <div class="form-group">
+                            <label for="email">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                                Имейл <span class="required">*</span>
+                            </label>
+                            <input type="email" id="email" name="Имейл" required placeholder="example@email.com">
+                        </div>
+
+                        <!-- Дейност -->
+                        <div class="form-group">
+                            <label for="activity">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                                </svg>
+                                Дейност <span class="required">*</span>
+                            </label>
+                            <select id="activity" name="Дейност" required>
+                                <option value="">-- Избери дейност --</option>
+                                <option value="Програмиране за деца">Програмиране за деца</option>
+                                <option value="Училищна занималня">Училищна занималня</option>
+                                <option value="Клуб Сръчни ръчички">Клуб "Сръчни ръчички"</option>
+                                <option value="Уроци по изобразително изкуство">Уроци по изобразително изкуство</option>
+                                <option value="Друго">Друго</option>
+                            </select>
+                        </div>
+
+                        <!-- Съобщение -->
+                        <div class="form-group full-width">
+                            <label for="message">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                                </svg>
+                                Съобщение <span class="required">*</span>
+                            </label>
+                            <textarea id="message" name="Съобщение" required placeholder="Напишете вашите въпроси или коментари тук..."></textarea>
+                        </div>
+
+                        <!-- Как искате да се свържем -->
+                        <div class="form-group">
+                            <label for="contact_method">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                                </svg>
+                                Как искате да се свържем? <span class="required">*</span>
+                            </label>
+                            <select id="contact_method" name="Предпочитан контакт" required>
+                                <option value="">-- Избери начин --</option>
+                                <option value="Телефон">Телефон</option>
+                                <option value="Имейл">Имейл</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Row -->
+                    <div class="submit-row">
+                        <div></div>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                            Изпрати
+                        </button>
+                    </div>
+
+                    <!-- Hidden fields -->
+                    <input type="hidden" name="_next" value="https://logikids.bg/thanks">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="footer-text">
+                        <p>Всички полета маркирани със * са задължителни. Вашите данни ще бъдат обработени конфиденциално.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+        <div id="footer-container"></div>
+
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            // FormSubmit will handle the submission
+            // Show success message after a short delay
+            setTimeout(() => {
+                successMessage.classList.add('show');
+                form.reset();
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }, 500);
+        });
+
+                async function loadComponent(url, containerId) {
+    try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        container.innerHTML = html;
+        container.classList.add('loaded');
+
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            if (script.src) {
+                newScript.src = script.src;
+            } else {
+                newScript.textContent = script.textContent;
+            }
+            document.head.appendChild(newScript);
+        });
+    } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await Promise.all([
+        loadComponent('navbar.html', 'navbar-container'),
+        loadComponent('footer.html', 'footer-container')
+    ]);
+});
+    </script>
+</body>
+</html>
