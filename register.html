@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как да започна - Logikids</title>
+
+	<meta name="description" content="Информация как да започенте, коя дейност да изберете за вашето дете и контакти на школата">
+	<meta name="keywords" content="Logikids tel, телефон за контакт логикидс, Logikids контакти">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Как да започна">
+	<meta property="og:description" content="Как да започна">
+	<meta property="og:url" content="https://logikids.bg/register">
+	<meta property="og:image" content="https://logikids.bg/files/link-logo-image.png">
+
+	<link rel="canonical" href="https://logikids.bg" />
+
+	<link rel="icon" type="image/x-icon" href="/files/favicon.ico">
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как да започнете - Logiкids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #f59e0b;
+            --accent-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-soft: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Component containers */
+        #navbar-container,
+        #footer-container {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #navbar-container.loaded,
+        #footer-container.loaded {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            background: #6d7bd8;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 45px;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Cards Section */
+        .cards-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--text-dark);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            font-family: inherit; /* Ensure it uses the same font */
+            font-size: inherit; /* Ensure same font size */
+            cursor: pointer; /* Make sure cursor is pointer */
+            box-sizing: border-box; /* Add box-sizing to match anchor behavior */
+        }
+        button.card-button {
+            font-family: 'Inter', sans-serif; /* Explicitly set font */
+            font-size: 1rem; /* Explicitly set font size */
+            line-height: 1.6; /* Match line height */
+        }
+
+        .card-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .card-button:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .card-button:hover::before {
+            left: 100%;
+        }
+
+        .card-secondary-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .phone-link {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .cta-section .subheading {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary svg {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .btn-primary svg {
+            width: 21px;
+            height: 21px;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7); /* Darker blue backdrop */
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(8px); /* Modern glass effect */
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 520px;
+            width: 100%;
+            animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #f5f5f5;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .modal-header {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .modal-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .modal-text strong {
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, var(--primary-color), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-text ul {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        .modal-text li {
+            margin-bottom: 15px;
+            padding-left: 36px;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-text li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .modal-text li:nth-child(1)::before {
+            content: '1';
+        }
+        .modal-text li:nth-child(2)::before {
+            content: '2';
+        }
+
+        .modal-text p:last-of-type {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .phone-link {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            position: relative;
+            padding: 4px 0;
+            transition: all 0.3s ease;
+            background: none;
+            -webkit-text-fill-color: var(--primary-color);
+        }
+
+        .phone-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), #8b5cf6);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .phone-link:hover {
+            color: #8b5cf6;
+            -webkit-text-fill-color: #8b5cf6;
+        }
+
+        .phone-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .modal-close {
+            background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-close::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .modal-close:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+            background: linear-gradient(135deg, #4338ca, #7c3aed);
+        }
+
+        .modal-close:hover::before {
+            left: 100%;
+        }
+
+        .modal-close:active {
+            transform: translateY(-1px);
+        }
+
+        /* Animation updates */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 70px;
+                min-height: 45vh;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .card h3 {
+                font-size: 1.3rem;
+            }
+
+            .card-button {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+            .modal-content {
+                padding: 40px 25px;
+                max-width: 90%;
+            }
+
+            .modal-header {
+                font-size: 1.7rem;
+                margin-bottom: 15px;
+            }
+
+            .modal-text {
+                font-size: 1rem;
+            }
+
+            .modal-text li {
+                padding-left: 32px;
+                font-size: 0.95rem;
+            }
+
+            .modal-close {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            .modal-header {
+                font-size: 1.5rem;
+            }
+
+            .modal-text li {
+                padding-left: 28px;
+            }
+
+            .modal-text li::before {
+                width: 18px;
+                height: 18px;
+                top: 6px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Как да започнете в Logikids?</h1>
+                <p>В зависимост от избраната дейност, начинът на записване е различен.<br>Изберете какво ви интересува и ще ви насочим стъпка по стъпка.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">Избери своя път</h2>
+
+            <div class="cards-grid">
+                <!-- Card 1: Programming -->
+                <div class="card">
+                    <h3>Програмиране за деца</h3>
+                    <p>За курсовете по програмиране провеждаме безплатни демо уроци, в които децата се запознават с преподавателите, начина на работа и обстановката, а родителите получават подробна информация.</p>
+                    <a href="/register-demo-lesson" class="card-button">Виж дати за демо урок</a>
+                </div>
+
+                <!-- Card 2: Drawing & Crafts -->
+                <div class="card">
+                    <h3>Уроци по рисуване или клуб "Сръчни ръчички"</h3>
+                    <p>Първото посещение е безплатно. Децата могат да дойдат и да се включат в занимание, за да усетят атмосферата и начина ни на работа.</p>
+                    <button class="card-button" onclick="openModal()">Как да посетим?</button>
+                </div>
+
+                <!-- Card 3: Student Afterschool Club -->
+                <div class="card">
+                    <h3>Ученическа занималня 1-4 клас</h3>
+                    <p>Записването за ученическата занималня се извършва след разговор с родител. Това ни помага да дадем точна информация и да обсъдим нуждите на детето.</p>
+                    <a href="tel:+359879185018" class="card-button">Обадете се за информация</a>
+                    <p class="card-secondary-text">📍 В близост до 34 ОУ, 36 СУ, 25 СУ, 51 СУ, 142 ОУ и още</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">Как да посетим?</div>
+            <div class="modal-text">
+                <strong>Първото посещение е безплатно!</strong>
+                <ul>
+                    <li>Необходимо е предварително обаждане по телефон</li>
+                    <li>Посещението е според актуалния график</li>
+                </ul>
+                <p>За записвания с въпроси: <a href="tel:+359879185018" class="phone-link">0879185018</a></p>
+            </div>
+            <button class="modal-close" onclick="closeModal()">Затвори</button>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Не сте сигурни кое занимание е най-подходящо за вашето дете?</h2>
+            <p class="subheading">Свържете се с нас и ще ви помогнем да изберете най-добрия вариант.</p>
+            <div class="cta-buttons">
+                <a href="tel:+359879181818" class="btn btn-primary">Обадете се</a>
+                <a href="/contact" class="btn btn-secondary">Свържете се с нас</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        document.getElementById('modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        async function loadComponent(url, containerId) {
+    try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        container.innerHTML = html;
+        container.classList.add('loaded');
+
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            if (script.src) {
+                newScript.src = script.src;
+            } else {
+                newScript.textContent = script.textContent;
+            }
+            document.head.appendChild(newScript);
+        });
+    } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await Promise.all([
+        loadComponent('navbar.html', 'navbar-container'),
+        loadComponent('footer.html', 'footer-container')
+    ]);
+});
+    </script>
+</body>
+</html>
