@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Записване за летнешка занималня - Logikids</title>
+
+	<meta name="description" content="Запишете детето си за летнешката занималня на LogiKids – програмиране и креативни умения за деца 6–14 г.">
+	<meta name="keywords" content="летнешка занималня, LogiKids, програмиране деца, творчески курс">
+
+    <meta property="og:type" content="website">
+	<meta property="og:title" content="Летнешка занималня - Logikids">
+	<meta property="og:description" content="Забавни летни курсове по програмиране за деца.">
+	<meta property="og:url" content="https://logikids.bg/summer-camp">
+	<meta property="og:image" content="https://logikids.bg/files/link-logo-image.png">
+
+  <link rel="icon" type="image/x-icon" href="https://logikids.bg/files/favicon.ico">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            margin-top: 30px;
+        }
+
+        .diagonal-split {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            clip-path: polygon(0 60%, 100% 45%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-section {
+            padding: 80px 20px 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .header-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 40px 60px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .form-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.12);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-section {
+            padding: 40px 0;
+            color: #333;
+            margin-top: 330px;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            line-height: 1.7;
+            max-width: 570px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+            min-width: 160px;
+            flex-shrink: 0;
+            padding-top: 14px;
+        }
+
+        .form-label svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            color: #6b7280;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .form-input-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-input,
+        .form-select {
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+            width: 100%;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .field-description {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .weeks-container-styled {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .month-section {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .month-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .month-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        .weeks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 30px;
+        }
+
+        .week-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .week-item:hover {
+            border-color: #2563eb;
+            background: #f0f4ff;
+            transform: translateX(4px);
+        }
+
+        .week-item.selected {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            border-color: #2563eb;
+            color: white;
+            font-weight: 600;
+        }
+
+        .week-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .success-message {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 16px;
+            color: #065f46;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 16px;
+            color: #991b1b;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Weeks Picker Modal Styles */
+        .weeks-picker-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            padding-bottom: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .modal-body-scroll {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 8px;
+            margin-right: -8px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            flex-shrink: 0;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn-cancel {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .modal-btn-cancel:hover {
+            background: #e5e7eb;
+        }
+
+        .modal-btn-confirm {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+        }
+
+        .modal-btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .modal-btn-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .weeks-display-input {
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #f9fafb;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .weeks-display-input:hover {
+            border-color: #2563eb;
+            background: white;
+        }
+
+        .weeks-display-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .weeks-display-input.has-value {
+            background: white;
+            border-color: #10b981;
+            color: #065f46;
+            font-weight: 500;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading .submit-btn {
+            background: #9ca3af;
+        }
+
+        @media (max-width: 1024px) {
+            .diagonal-split {
+                clip-path: polygon(0 65%, 100% 50%, 100% 100%, 0% 100%);
+            }
+
+            .main-content {
+                gap: 60px;
+                padding: 40px 40px 80px;
+            }
+
+            .header-section h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .diagonal-split {
+                clip-path: polygon(0 50%, 100% 40%, 100% 100%, 0% 100%);
+            }
+
+            .header-section {
+                padding: 60px 20px 40px;
+            }
+
+            .header-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-section p {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 20px 20px 60px;
+            }
+
+            .main-container {
+                margin-top: 54px;
+            }
+
+            .form-section {
+                padding: 30px 20px;
+            }
+
+            .form-group {
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                min-width: auto;
+                padding-top: 0;
+                width: 100%;
+            }
+
+            .form-input-wrapper {
+                width: 100%;
+            }
+
+            .form-input,
+            .form-select {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .info-section {
+                padding: 20px;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .info-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+
+            .header-section p {
+                font-size: 1rem;
+            }
+
+            .form-section {
+                padding: 25px 15px;
+            }
+
+            .info-section h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-624SYFHC0F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-624SYFHC0F');
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <div class="main-container">
+        <div class="diagonal-split"></div>
+
+        <div class="content-wrapper">
+            <div class="header-section">
+                <h1>Лятна занималня на LogiKids</h1>
+                <p>Едно незабравимо лято, пълно с програмиране, творчество и нови приятели. Запишете детето си на лятната занималния и му позволете да развие своите способности.</p>
+            </div>
+
+            <div class="main-content">
+                <div class="form-section">
+                    <div class="success-message" id="successMessage">
+                        <strong>Успех!</strong> Вашето съобщение беше изпратено успешно. Ще се свържем с вас скоро!
+                    </div>
+
+                    <div class="error-message" id="errorMessage">
+                        <strong>Възникна грешка!</strong> <span id="errorText"></span>
+                    </div>
+
+                    <form id="summerForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                Име <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="text" id="name" name="name" class="form-input" required placeholder="Вашето име">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="kid">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                Име на детето <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="text" id="kid" name="kid" class="form-input" required placeholder="Име на вашето дете">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                                Имейл <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="example@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                                Телефон <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+359 888 123 456">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="weeksDisplay">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                </svg>
+                                Седмици <span class="required">*</span>
+                            </label>
+                            <div class="form-input-wrapper">
+                                <input
+                                    type="text"
+                                    id="weeksDisplay"
+                                    name="weeksDisplay"
+                                    class="weeks-display-input"
+                                    readonly
+                                    required
+                                    placeholder="Кликнете за да изберете седмици"
+                                    onclick="openWeeksModal()"
+                                />
+                                <input type="hidden" id="selectedWeeks" name="selectedWeeks" />
+                                <div class="field-description">Изберете желаните седмици за записване.</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; display: inline;">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                            Изпрати съобщението
+                        </button>
+
+                        <div class="footer-text">
+                            <p>Всички полета маркирани със * са задължителни. Вашите данни ще бъдат обработени конфиденциално.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="info-section">
+                    <h2>За лятната занималня</h2>
+                    <p>лятната занималня на LogiKids е перфектната възможност за детето ви да прекара лятото в развиване на своите умения в забавна и творческа среда. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weeks Picker Modal -->
+    <div class="weeks-picker-modal" id="weeksPickerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Изберете седмици</h2>
+                <button class="modal-close" onclick="closeWeeksModal()">&times;</button>
+            </div>
+            <div class="modal-body-scroll">
+                <div id="weeksModalBody">
+                    <p style="text-align: center; color: #6b7280;">Зареждане на седмици...</p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeWeeksModal()">Отказ</button>
+                <button class="modal-btn modal-btn-confirm" id="confirmWeeksBtn" onclick="confirmWeeksSelection()" disabled>Потвърди</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script>
+        // API Configuration
+        const token = "pat0aBnw4JWfoMXNp.6e70f6c69e0dadb19b5ae5a0f4a9e95d1608e4e25b39e5f516f3fb1503ca3c78";
+        const baseId = "appVuJp2VKVi4tkMd";
+        const weeksTable = "tblT9jIXhpg8AfxpU";
+        const regTable = "tblPohZ6mSXqNtujB";
+
+        // DOM Elements
+        const form = document.getElementById('summerForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const weeksDisplay = document.getElementById('weeksDisplay');
+        const weeksHidden = document.getElementById('selectedWeeks');
+        const weeksModal = document.getElementById('weeksPickerModal');
+        const weeksModalBody = document.getElementById('weeksModalBody');
+        const confirmWeeksBtn = document.getElementById('confirmWeeksBtn');
+
+        let weeksData = [];
+        let selectedWeeks = new Set();
+        let tempSelectedWeeks = new Set();
+
+        // Form validation
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearValidation);
+        });
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+
+            field.classList.remove('error', 'success');
+
+            if (field.hasAttribute('required') && !value) {
+                showFieldError(field, 'Това поле е задължително');
+                return false;
+            }
+
+            if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    showFieldError(field, 'Моля въведете валиден email адрес');
+                    return false;
+                }
+            }
+
+            if (field.type === 'tel' && value) {
+                const phoneRegex = /^[\+]?[\d\s\-\(\)]{8,}$/;
+                if (!phoneRegex.test(value)) {
+                    showFieldError(field, 'Моля въведете валиден телефонен номер');
+                    return false;
+                }
+            }
+
+            showFieldSuccess(field);
+            return true;
+        }
+
+        function showFieldError(field, message) {
+            field.classList.add('error');
+            field.title = message;
+        }
+
+        function showFieldSuccess(field) {
+            field.classList.add('success');
+            field.title = '';
+        }
+
+        function clearValidation(e) {
+            const field = e.target;
+            field.classList.remove('error', 'success');
+            field.title = '';
+        }
+
+        // Load weeks from Airtable
+        async function loadWeeks() {
+            try {
+                const res = await fetch(
+                    `https://api.airtable.com/v0/${baseId}/${weeksTable}?filterByFormula={Active}=1`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+
+                if (!res.ok) throw new Error(`Failed to fetch weeks: ${res.status}`);
+
+                const data = await res.json();
+                weeksData = data.records;
+
+            } catch (err) {
+                console.error("Грешка при зареждане на седмици:", err);
+                errorText.textContent = "Грешка при зареждане на седмици.";
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Group weeks by month
+        function groupByMonth(data) {
+            const grouped = {};
+
+            data.forEach(w => {
+                const month = w.fields.Month || "Други";
+
+                if (!grouped[month]) {
+                    grouped[month] = [];
+                }
+
+                grouped[month].push(w);
+            });
+
+            return grouped;
+        }
+
+        // Render weeks modal
+        function renderWeeksModal() {
+            const grouped = groupByMonth(weeksData);
+            let html = '';
+
+            Object.keys(grouped).forEach(month => {
+                html += `
+                    <div class="month-section">
+                        <label class="month-header">
+                            <input type="checkbox" class="month-checkbox" onchange="toggleMonthModal('${month}', this.checked)">
+                            <span>${month}</span>
+                        </label>
+                        <div class="weeks-list">
+                `;
+
+                grouped[month].forEach(w => {
+                    const isSelected = tempSelectedWeeks.has(w.id);
+                    html += `
+                        <label class="week-item ${isSelected ? 'selected' : ''}" data-id="${w.id}">
+                            <input type="checkbox" class="week-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleWeekModal('${w.id}', this.checked)">
+                            <span>${w.fields.Name}</span>
+                        </label>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            weeksModalBody.innerHTML = html;
+            updateModalUI();
+        }
+
+        // Open weeks modal
+        function openWeeksModal() {
+            tempSelectedWeeks = new Set(selectedWeeks);
+            renderWeeksModal();
+            weeksModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close weeks modal
+        function closeWeeksModal() {
+            weeksModal.style.display = 'none';
+            document.body.style.overflow = '';
+            tempSelectedWeeks.clear();
+        }
+
+        // Toggle week in modal
+        function toggleWeekModal(id, checked) {
+            if (checked) {
+                tempSelectedWeeks.add(id);
+            } else {
+                tempSelectedWeeks.delete(id);
+            }
+            updateModalUI();
+        }
+
+        // Toggle all weeks in a month in modal
+        function toggleMonthModal(month, checked) {
+            const weeks = weeksData.filter(w => w.fields.Month === month);
+
+            weeks.forEach(w => {
+                if (checked) {
+                    tempSelectedWeeks.add(w.id);
+                } else {
+                    tempSelectedWeeks.delete(w.id);
+                }
+            });
+
+            updateModalUI();
+        }
+
+        // Update modal UI
+        function updateModalUI() {
+            const hasSelection = tempSelectedWeeks.size > 0;
+            confirmWeeksBtn.disabled = !hasSelection;
+
+            document.querySelectorAll('.week-item').forEach(el => {
+                const id = el.dataset.id;
+                const checkbox = el.querySelector('.week-checkbox');
+
+                if (tempSelectedWeeks.has(id)) {
+                    el.classList.add('selected');
+                    checkbox.checked = true;
+                } else {
+                    el.classList.remove('selected');
+                    checkbox.checked = false;
+                }
+            });
+
+            document.querySelectorAll('.month-section').forEach(section => {
+                const monthCheckbox = section.querySelector('.month-checkbox');
+                const monthHeader = section.querySelector('.month-header span');
+                if (monthHeader) {
+                    const weeksInMonth = weeksData.filter(w => w.fields.Month === monthHeader.textContent);
+                    const allSelected = weeksInMonth.every(w => tempSelectedWeeks.has(w.id));
+                    const someSelected = weeksInMonth.some(w => tempSelectedWeeks.has(w.id));
+
+                    monthCheckbox.checked = allSelected;
+                    monthCheckbox.indeterminate = someSelected && !allSelected;
+                }
+            });
+        }
+
+        // Confirm weeks selection
+        function confirmWeeksSelection() {
+            selectedWeeks = new Set(tempSelectedWeeks);
+
+            const selectedNames = weeksData
+                .filter(w => selectedWeeks.has(w.id))
+                .map(w => w.fields.Name);
+
+            if (selectedNames.length > 0) {
+                weeksDisplay.value = selectedNames.join(', ');
+                weeksDisplay.classList.add('has-value');
+                weeksHidden.value = Array.from(selectedWeeks).join(', ');
+            }
+
+            closeWeeksModal();
+        }
+
+        // Close modal when clicking outside
+        weeksModal.addEventListener('click', function(e) {
+            if (e.target === weeksModal) {
+                closeWeeksModal();
+            }
+        });
+
+        // Form submission
+        async function submitForm(event) {
+            event.preventDefault();
+
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            if (selectedWeeks.size === 0) {
+                errorText.textContent = "Моля изберете поне една седмица";
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            let isValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+
+            requiredFields.forEach(field => {
+                if (field.type !== 'hidden' && !validateField({ target: field })) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                const firstError = form.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstError.focus();
+                }
+                return;
+            }
+
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Изпращане...</span>';
+            submitBtn.disabled = true;
+            form.classList.add('loading');
+
+            try {
+                const selectedIds = Array.from(selectedWeeks);
+                const selectedNames = weeksData
+                    .filter(w => selectedWeeks.has(w.id))
+                    .map(w => w.fields.Name);
+
+                const name = document.getElementById("name").value.trim();
+                const kid = document.getElementById("kid").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const phone = document.getElementById("phone").value.trim();
+
+                const res = await fetch(`https://api.airtable.com/v0/${baseId}/${regTable}`, {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        records: [
+                            {
+                                fields: {
+                                    fldg1i27N6RgWFdsX: name,
+                                    fldOHi3UW9tHfFaMK: kid,
+                                    fld4NuHNqeFtBlzHA: email,
+                                    fldyMWOJVV8dAsEEl: phone,
+                                    fldMfE8FP9339b9Eh: selectedIds.join(", "),
+                                    fldUYHleyQd8t1SO9: JSON.stringify(selectedNames)
+                                }
+                            }
+                        ]
+                    })
+                });
+
+                if (res.ok) {
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        form.reset();
+                        selectedWeeks.clear();
+                        updateUI();
+                    }, 1500);
+                } else {
+                    const errData = await res.json();
+                    throw new Error(errData.error?.message || `HTTP error: ${res.status}`);
+                }
+            } catch (err) {
+                console.error("Submission error:", err);
+                errorText.textContent = "Възникна грешка при изпращане. Моля, опитайте отново.";
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                form.classList.remove('loading');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            form.addEventListener('submit', submitForm);
+            loadWeeks();
+        });
+    </script>
+
+    <script>
+        // Function to load external HTML content
+        async function loadComponent(url, containerId) {
+          try {
+            const response = await fetch(url);
+            const html = await response.text();
+            const container = document.getElementById(containerId);
+            container.innerHTML = html;
+            container.classList.add('loaded');
+
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(script => {
+              const newScript = document.createElement('script');
+              if (script.src) {
+                newScript.src = script.src;
+              } else {
+                newScript.textContent = script.textContent;
+              }
+              document.head.appendChild(newScript);
+            });
+          } catch (error) {
+            console.error(`Error loading ${url}:`, error);
+          }
+        }
+
+        // Load navbar and footer
+        document.addEventListener('DOMContentLoaded', async () => {
+          await Promise.all([
+            loadComponent('navbar.html', 'navbar-container'),
+            loadComponent('footer.html', 'footer-container')
+          ]);
+        });
+    </script>
+
+</body>
+</html>
