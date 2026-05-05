@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лятен клуб - Logikids</title>
+
+	<meta name="description" content="LogiKids Summer Club – лятна програма за ученици 1–5 клас с английски, време за четене, tech мисии, приключения сред природата и разнообразни активности всеки ден.">
+	<meta name="keywords" content="Логикидс, летен клуб, летна програма, занималня лято, деца, ученици, приключения, английски, tech мисии">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Logikids Summer Club">
+	<meta property="og:description" content="Лято без скука. Повече приключения. Без загуба на знания.">
+	<meta property="og:url" content="https://logikids.bg/zanimalniq">
+	<meta property="og:image" content="https://logikids.bg/files/link-logo-image.png">
+
+	<link rel="canonical" href="https://logikids.bg" />
+
+	<link rel="icon" type="image/x-icon" href="/files/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-light: #c7d2fe;
+            --primary-soft: #e0e7ff;
+            --secondary-color: #a78bfa;
+            --accent-color: #10b981;
+            --accent-warm: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-soft: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --icon-color: #6366f1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+			background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(30, 41, 59, 0.75)), 
+						url('https://logikids.bg/files/outdoor.jpeg') center/cover no-repeat;
+			backdrop-filter: blur(15px);
+			-webkit-backdrop-filter: blur(15px); /* За поддръжка от Safari */
+			padding: 160px 0 100px 0;
+
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(99, 102, 241, 0.1);
+            backdrop-filter: blur(1px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        }
+
+        .hero-subheading {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            font-weight: 600;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+        }
+
+        .hero-meta {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            opacity: 0.85;
+            font-weight: 300;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .hero-footer-text {
+            font-size: 1rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-bg-white {
+            background: var(--white);
+        }
+
+        .section-bg-light {
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-title-handwritten {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== WHY PARENTS (Section 2) ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 35px 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== SPLIT SECTIONS (3, 4, 5) ===== */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .split-section.reverse .split-image {
+            order: 2;
+        }
+
+        .split-section.reverse .split-text {
+            order: 1;
+        }
+
+        .split-image {
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 380px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .split-image-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .split-image-placeholder.nature {
+            background: linear-gradient(135deg, #059669 0%, #34d399 50%, #6ee7b7 100%);
+        }
+
+        .split-image-placeholder.tech {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a78bfa 100%);
+        }
+
+        .split-image-placeholder.english {
+            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #7dd3fc 100%);
+        }
+
+        .split-image-placeholder svg {
+            width: 100px;
+            height: 100px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .split-text h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .split-text .split-desc {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .split-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .split-list li {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            padding: 8px 0 8px 36px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .split-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+        }
+
+        .split-list li::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 18px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .split-footer {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* ===== WEEK OVERVIEW (Section 6) ===== */
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .week-card {
+            background: white;
+            padding: 30px 16px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .week-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .week-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.12);
+        }
+
+        .week-card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .week-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .week-footer {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== CHECKLIST (Section 7) ===== */
+        .checklist-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .checkmark-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .checkmark-list li {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            padding-left: 40px;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .checkmark-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+
+        /* ===== DAY SCHEDULE (Section 8) ===== */
+        .day-schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .day-card.morning::before {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .day-card.afternoon::before {
+            background: linear-gradient(90deg, #f97316, #fb923c);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.12);
+        }
+
+        .day-card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .day-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .day-card ul {
+            list-style: none;
+        }
+
+        .day-card ul li {
+            font-size: 1rem;
+            color: var(--text-light);
+            padding: 8px 0 8px 28px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .day-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        /* ===== PRICING (Section 9) ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.15);
+        }
+
+        .pricing-card.featured::after {
+            content: 'Най-популярен';
+            position: absolute;
+            top: 24px;
+            right: -35px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6px 0;
+            width: 150px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.12);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .pricing-card .price-period {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .pricing-includes {
+            list-style: none;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+
+        .pricing-includes li {
+            font-size: 1rem;
+            color: var(--text-dark);
+            padding: 8px 0 8px 30px;
+            position: relative;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .pricing-includes li::before {
+            content: '✓ ';
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 8px;
+            position: absolute;
+            left: 0;
+        }
+
+        .pricing-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .pricing-cta {
+            text-align: center;
+        }
+
+        /* ===== PRACTICAL INFO (Section 10) ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.12);
+        }
+
+        .info-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .info-card h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            padding: 15px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            background: white;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== COMPONENT CONTAINERS ===== */
+        #navbar-container,
+        #footer-container {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #navbar-container.loaded,
+        #footer-container.loaded {
+            opacity: 1;
+        }
+
+        #navbar-container,
+        #footer-container {
+            background: transparent !important;
+            position: relative;
+        }
+
+        #navbar-container {
+            text-align: initial;
+        }
+
+        #footer-container {
+            text-align: left;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subheading {
+                font-size: 1.1rem;
+            }
+
+            .hero-meta {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-title-handwritten {
+                font-size: 2.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .split-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .split-section.reverse .split-image,
+            .split-section.reverse .split-text {
+                order: unset;
+            }
+
+            .split-image-placeholder {
+                min-height: 250px;
+            }
+
+            .split-text h3 {
+                font-size: 1.8rem;
+            }
+
+            .week-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .day-schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .week-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .day-card {
+                padding: 30px 24px;
+            }
+
+            .pricing-card {
+                padding: 30px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Logikids Summer Club</h1>
+        <p class="hero-subheading">Лято без скука. Повече приключения. Без загуба на знания.</p>
+        <p class="hero-meta">Лятна програма за ученици 1–5 клас с английски, време за четене, tech мисии, приключения сред природата и разнообразни активности всеки ден.</p>
+        <div class="hero-buttons">
+            <a href="https://logikids.bg/register-summer" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                Запиши детето си
+            </a>
+            <a href="#program" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                Разгледай програмата
+            </a>
+        </div>
+        <p class="hero-footer-text">Местата са ограничени – запишете детето си своевременно</p>
+    </div>
+</section>
+
+<!-- ===== SECTION 2: WHY PARENTS LOVE IT ===== -->
+<section class="section-bg-white">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Защо родителите избират Logikids Summer Club?</h2>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card scale-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h4>По-малко време пред екрани</h4>
+                <p>Повече игри, движение и реални преживявания.</p>
+            </div>
+
+            <div class="card scale-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h4>Поддържане на знанията</h4>
+                <p>Четене, английски и полезни упражнения без стрес.</p>
+            </div>
+
+            <div class="card scale-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <h4>Повече движение</h4>
+                <p>Игри навън, спорт и приключения.</p>
+            </div>
+
+            <div class="card scale-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h4>Незабравимо лято</h4>
+                <p>Нови приятели и спомени.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 3: NATURE DAY ===== -->
+<section class="section-bg-light">
+    <div class="container">
+        <div class="split-section">
+            <div class="split-image">
+                <img src="https://logikids.bg/files/outdoor-day.jpg" alt="Приключения сред природата" style="width:100%;height:100%;object-fit:cover;display:block;min-height:380px;" />
+            </div>
+            <div class="split-text">
+                <h3>Един ден седмично сме изцяло сред природата</h3>
+                <p class="split-desc">Посещаваме паркове, природни забележителности и нови локации.</p>
+                <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 12px;">Организираме:</p>
+                <ul class="split-list">
+                    <li>игри на открито</li>
+                    <li>пикници</li>
+                    <li>приключения</li>
+                    <li>специални активности</li>
+                    <li>конна езда</li>
+                    <li>разходки сред природата</li>
+                </ul>
+                <p class="split-footer">Ден, който децата чакат с нетърпение всяка седмица.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 4: TECH DAY ===== -->
+<section class="section-bg-white">
+    <div class="container">
+        <div class="split-section reverse">
+            <div class="split-image">
+                <img src="https://logikids.bg/files/tech-day0img.jpg" alt="Tech Mission Day" style="width:100%;height:100%;object-fit:cover;display:block;min-height:380px;" />
+            </div>
+            <div class="split-text">
+                <h3>Tech Mission Day</h3>
+                <p class="split-desc">Един ден седмично децата участват в:</p>
+                <ul class="split-list">
+                    <li>логически предизвикателства</li>
+                    <li>дигитални мисии</li>
+                    <li>творчески tech задачи</li>
+                    <li>mini projects</li>
+                    <li>игрово учене</li>
+                </ul>
+                <p class="split-footer">Технологиите тук не са пасивно стоене пред екран — те са инструмент за създаване и мислене.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 5: ENGLISH ===== -->
+<section class="section-bg-light">
+    <div class="container">
+        <div class="split-section">
+            <div class="split-image">
+                <img src="https://logikids.bg/files/english-day.jpg" alt="Английски за деца" style="width:100%;height:100%;object-fit:cover;display:block;min-height:380px;" />
+            </div>
+            <div class="split-text">
+                <h3>Английски, който децата харесват</h3>
+                <p class="split-desc">По нашата интерактивна програма децата учат чрез:</p>
+                <ul class="split-list">
+                    <li>игри</li>
+                    <li>диалози</li>
+                    <li>ролеви ситуации</li>
+                    <li>реална практика</li>
+                </ul>
+                <p class="split-footer">Без зубрене. Повече увереност.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 6: WEEK OVERVIEW ===== -->
+<section class="section-bg-white" id="program">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Всеки ден е различен</h2>
+        </div>
+
+        <div class="week-grid">
+            <div class="week-card scale-in">
+                <span class="week-card-icon">📚</span>
+                <h4>Четене</h4>
+            </div>
+            <div class="week-card scale-in">
+                <span class="week-card-icon">⚽</span>
+                <h4>Игри навън</h4>
+            </div>
+            <div class="week-card scale-in">
+                <span class="week-card-icon">🎨</span>
+                <h4>Творчество</h4>
+            </div>
+            <div class="week-card scale-in">
+                <span class="week-card-icon">🧠</span>
+                <h4>Забавни задачи</h4>
+            </div>
+            <div class="week-card scale-in">
+                <span class="week-card-icon">🌿</span>
+                <h4>Приключения</h4>
+            </div>
+            <div class="week-card scale-in">
+                <span class="week-card-icon">💻</span>
+                <h4>Tech мисии</h4>
+            </div>
+            <div class="week-card scale-in">
+                <span class="week-card-icon">🌍</span>
+                <h4>Английски</h4>
+            </div>
+        </div>
+
+        <p class="week-footer">Динамична програма, която държи децата ангажирани.</p>
+    </div>
+</section>
+
+<!-- ===== SECTION 7: WHO IS IT FOR ===== -->
+<section class="section-bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Подходящо е за вашето дете, ако искате:</h2>
+        </div>
+
+        <div class="checklist-content">
+            <ul class="checkmark-list">
+                <li>да не прекарва лятото пред телефон</li>
+                <li>да поддържа знанията си</li>
+                <li>да бъде активно</li>
+                <li>да развива нови умения</li>
+                <li>да създава приятелства</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 8: DAILY SCHEDULE ===== -->
+<section class="section-bg-white">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Как протича денят?</h2>
+        </div>
+
+        <div class="day-schedule-grid">
+            <div class="day-card morning">
+                <span class="day-card-icon">🌞</span>
+                <h3>Сутрин</h3>
+                <ul>
+                    <li>Английски чрез игри и разговор</li>
+                    <li>Време за четене на лятната литература</li>
+                    <li>Забавни задачи по математика и български</li>
+                    <li>Логически и tech активности</li>
+                </ul>
+            </div>
+
+            <div class="day-card afternoon">
+                <span class="day-card-icon">🌤</span>
+                <h3>Следобед</h3>
+                <ul>
+                    <li>Игри и спорт навън</li>
+                    <li>Творчески занимания</li>
+                    <li>Посещения на интересни места</li>
+                    <li>Тематични активности</li>
+                    <li>Време за забавление и нови приятелства</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 9: PRICING ===== -->
+<section class="section-bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Такси и записване</h2>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Седмичен план</h3>
+                <div class="price">€105</div>
+                <div class="price-period">/ седмица</div>
+                <p class="price-desc">Идеален за родители, които искат гъвкавост.</p>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3>Месечен пакет</h3>
+                <div class="price">€365</div>
+                <div class="price-period">/ 4 седмици</div>
+                <p class="price-desc">По-добра стойност за цял месец участие.</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.1rem; font-weight: 600; color: var(--primary-color); margin-bottom: 25px;">Цената включва:</p>
+
+        <ul class="pricing-includes">
+            <li>всички учебни активности</li>
+            <li>английски програма</li>
+            <li>tech мисии</li>
+            <li>активности на открито</li>
+            <li>материали за творчески занимания</li>
+            <li>седмичен ден сред природата</li>
+        </ul>
+
+        <p class="pricing-note">Храната не e включенa в таксата.</p>
+
+        <div class="pricing-cta">
+            <a href="https://logikids.bg/register-summer" class="btn btn-primary" style="background: var(--gradient-primary); color: white; border: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                Запиши детето си
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 10: PRACTICAL INFO ===== -->
+<section class="section-bg-white">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Практическа информация</h2>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card scale-in">
+                <span class="info-card-icon">📍</span>
+                <h4>Локация</h4>
+                <p>ул. Кюстендил 21, Красно село</p>
+            </div>
+
+            <div class="info-card scale-in">
+                <span class="info-card-icon">📅</span>
+                <h4>Период</h4>
+                <p>Юни – Август</p>
+            </div>
+
+            <div class="info-card scale-in">
+                <span class="info-card-icon">🕘</span>
+                <h4>Работно време</h4>
+                <p>08:30 – 17:30</p>
+            </div>
+
+            <div class="info-card scale-in">
+                <span class="info-card-icon">🍽</span>
+                <h4>Храна</h4>
+                <p>Не е включена</p>
+            </div>
+
+            <div class="info-card scale-in">
+                <span class="info-card-icon">👧</span>
+                <h4>Възраст</h4>
+                <p>1–5 клас</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Местата са ограничени</h2>
+            <p>Лято, в което децата не губят знания, а създават спомени.</p>
+            <a href="https://logikids.bg/register-summer" class="cta-btn">Запиши детето си</a>
+        </div>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script>
+    async function loadComponent(url, containerId) {
+        try {
+            const response = await fetch(url);
+            const html = await response.text();
+            const container = document.getElementById(containerId);
+            container.innerHTML = html;
+            container.classList.add('loaded');
+
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(script => {
+                const newScript = document.createElement('script');
+                if (script.src) {
+                    newScript.src = script.src;
+                } else {
+                    newScript.textContent = script.textContent;
+                }
+                document.head.appendChild(newScript);
+            });
+        } catch (error) {
+            console.error(`Error loading ${url}:`, error);
+        }
+    }
+
+    function initializeAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.card, .week-card, .info-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.08}s`;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        await Promise.all([
+            loadComponent('navbar.html', 'navbar-container'),
+            loadComponent('footer.html', 'footer-container')
+        ]);
+        initializeAnimations();
+    });
+
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('a[href^="#"]')) {
+            e.preventDefault();
+            const target = document.querySelector(e.target.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
